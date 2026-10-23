@@ -310,9 +310,15 @@ def create_app() -> Any:
     app.add_route("/api/indicators/check", indicators_check, methods=["GET"])
     app.add_route("/api/indicators/export", indicators_export, methods=["GET"])
 
-    # Serve static simulator web client
-    web_dir = Path(__file__).resolve().parent.parent.parent / "web"
-    if web_dir.exists():
+    # Serve static simulator web client (resolves in Docker container or local source tree)
+    candidates = [
+        Path.cwd() / "web",
+        Path("/app/web"),
+        Path(__file__).resolve().parent.parent.parent / "web",
+        Path(__file__).resolve().parent / "web",
+    ]
+    web_dir = next((c for c in candidates if c.exists() and (c / "index.html").exists()), None)
+    if web_dir is not None:
         index_file = web_dir / "index.html"
 
         no_cache_headers = {
@@ -340,6 +346,7 @@ def create_app() -> Any:
             )
 
         app.add_route("/", serve_index, methods=["GET"])
+        app.add_route("/index.html", serve_index, methods=["GET"])
         app.add_route("/styles.css", serve_css, methods=["GET"])
         app.add_route("/app.js", serve_js, methods=["GET"])
         app.mount("/web", StaticFiles(directory=str(web_dir), html=True), name="web")
