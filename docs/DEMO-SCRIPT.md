@@ -72,7 +72,7 @@ Safe Buffer: 30 seconds below 03:00 limit
 | Time | On-Screen Action | Narration (Voice-Over) |
 |---|---|---|
 | **2:00 - 2:10** | Click the **Region selector** in the header and switch from `IN` to `US`. Type or speak a tax gift card scam message. | *"AURALERT scales globally. Switching to the US immediately reconfigures emergency guidance to the FTC helpline at 1-877-382-4357 and the FBI IC3 portal."* |
-| **2:10 - 2:18** | Briefly show terminal with `pytest tests -v` passing all 35 tests including zero-network monkeypatching. | *"With 35 automated tests, 100% precision and recall on our benchmark, and complete prompt-injection immunity, AURALERT is enterprise-hardened."* |
+| **2:10 - 2:18** | Briefly show terminal with `pytest tests -v` passing all 81 tests including zero-network monkeypatching. | *"With 81 automated tests, 100% precision and recall on our benchmark, and complete prompt-injection immunity, AURALERT is enterprise-hardened."* |
 
 ---
 
