@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" style="background:#080915; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bg-glow" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#181336" />
+      <stop offset="50%" stop-color="#0d0e20" />
+      <stop offset="100%" stop-color="#06070e" />
+    </radialGradient>
+
+    <!-- Center Pulse Gradient -->
+    <radialGradient id="core-glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.9" />
+      <stop offset="25%" stop-color="#7000ff" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#7000ff" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#080915" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Wave Gradients -->
+    <linearGradient id="wave-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.1" />
+      <stop offset="50%" stop-color="#00f2fe" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#4facfe" stop-opacity="0.1" />
+    </linearGradient>
+
+    <linearGradient id="wave-purple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7000ff" stop-opacity="0.1" />
+      <stop offset="50%" stop-color="#b827fc" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#7000ff" stop-opacity="0.1" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="tech-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1d223d" stroke-width="0.7" stroke-opacity="0.5" />
+      <circle cx="40" cy="40" r="1" fill="#00f2fe" fill-opacity="0.3" />
+    </pattern>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="intense-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14" result="blur1" />
+      <feGaussianBlur stdDeviation="4" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur1" />
+        <feMergeNode in="blur2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bg-glow)" />
+  <rect width="1200" height="675" fill="url(#tech-grid)" opacity="0.6" />
+
+  <!-- Central Radial Ambience -->
+  <circle cx="600" cy="260" r="380" fill="url(#core-glow)" />
+
+  <!-- Acoustic Radar Rings -->
+  <g filter="url(#glow)">
+    <circle cx="600" cy="260" r="280" fill="none" stroke="#252c54" stroke-width="1.2" stroke-dasharray="4 8" />
+    <circle cx="600" cy="260" r="230" fill="none" stroke="#00f2fe" stroke-width="1.2" stroke-opacity="0.35" />
+    <circle cx="600" cy="260" r="180" fill="none" stroke="#7000ff" stroke-width="1.4" stroke-opacity="0.5" stroke-dasharray="8 6" />
+    <circle cx="600" cy="260" r="130" fill="none" stroke="#00f2fe" stroke-width="1.6" stroke-opacity="0.7" />
+    <circle cx="600" cy="260" r="85" fill="none" stroke="#00f2fe" stroke-width="2" stroke-opacity="0.85" />
+    <circle cx="600" cy="260" r="45" fill="none" stroke="#7000ff" stroke-width="2.2" stroke-opacity="0.9" />
+    <circle cx="600" cy="260" r="12" fill="#00f2fe" filter="url(#intense-glow)" />
+  </g>
+
+  <!-- Crosshair Radar Targets -->
+  <line x1="280" y1="260" x2="920" y2="260" stroke="#00f2fe" stroke-width="0.8" stroke-opacity="0.3" stroke-dasharray="6 6" />
+  <line x1="600" y1="30" x2="600" y2="490" stroke="#00f2fe" stroke-width="0.8" stroke-opacity="0.3" stroke-dasharray="6 6" />
+
+  <!-- Synthetic Voice Waves -->
+  <path d="M 100 260 Q 250 140, 400 260 T 700 260 T 1000 260 T 1150 260" fill="none" stroke="url(#wave-cyan)" stroke-width="2.5" filter="url(#glow)" />
+  <path d="M 50 260 Q 200 370, 420 260 T 800 260 T 1100 260" fill="none" stroke="url(#wave-purple)" stroke-width="2.5" filter="url(#glow)" />
+  <path d="M 150 260 Q 350 200, 550 260 T 950 260 T 1150 260" fill="none" stroke="#00f2fe" stroke-width="1.2" stroke-opacity="0.5" />
+  <path d="M 80 260 Q 300 320, 600 260 T 1050 260" fill="none" stroke="#b827fc" stroke-width="1.2" stroke-opacity="0.5" />
+
+  <!-- Subtle Audio EQ Bars -->
+  <g opacity="0.4" fill="#00f2fe">
+    <rect x="520" y="248" width="3" height="24" rx="1.5" />
+    <rect x="532" y="240" width="3" height="40" rx="1.5" />
+    <rect x="544" y="232" width="3" height="56" rx="1.5" />
+    <rect x="556" y="220" width="3" height="80" rx="1.5" />
+    <rect x="568" y="238" width="3" height="44" rx="1.5" />
+    <rect x="632" y="238" width="3" height="44" rx="1.5" />
+    <rect x="644" y="220" width="3" height="80" rx="1.5" />
+    <rect x="656" y="232" width="3" height="56" rx="1.5" />
+    <rect x="668" y="240" width="3" height="40" rx="1.5" />
+    <rect x="680" y="248" width="3" height="24" rx="1.5" />
+  </g>
+
+  <!-- Branding Text Block -->
+  <g text-anchor="middle">
+    <!-- Main Title -->
+    <text x="600" y="555" fill="#ffffff" font-size="52" font-weight="900" letter-spacing="10" filter="url(#glow)">AURALERT</text>
+    
+    <!-- Subtitle (No "AI") -->
+    <text x="600" y="598" fill="#00f2fe" font-size="20" font-weight="600" letter-spacing="4">VOICE-FIRST SCAM DEFENSE</text>
+
+    <!-- Tagline -->
+    <text x="600" y="632" fill="#c4c9e8" font-size="17" font-weight="400" font-style="italic" letter-spacing="2">“Listen Beyond the Lie.”</text>
+  </g>
+
+  <!-- Corner Tech Decors -->
+  <path d="M 40 70 L 40 40 L 70 40" fill="none" stroke="#00f2fe" stroke-width="2" opacity="0.7" />
+  <path d="M 1160 70 L 1160 40 L 1130 40" fill="none" stroke="#00f2fe" stroke-width="2" opacity="0.7" />
+  <path d="M 40 605 L 40 635 L 70 635" fill="none" stroke="#7000ff" stroke-width="2" opacity="0.7" />
+  <path d="M 1160 605 L 1160 635 L 1130 635" fill="none" stroke="#7000ff" stroke-width="2" opacity="0.7" />
+
+  <text x="80" y="56" fill="#656e98" font-size="11" font-family="monospace" letter-spacing="1">DEFENSE RADAR // MCP STREAMABLE HTTP</text>
+  <text x="1120" y="56" fill="#656e98" font-size="11" font-family="monospace" letter-spacing="1" text-anchor="end">ALEXA+ HACKATHON 2026</text>
+</svg>

@@ -1,0 +1,20 @@
+{"id": 1, "text": "Dear user, your PAN is not linked with Aadhaar. Account will be frozen within 24 hours. Click http://pan-aadhaar-link.xyz/verify now", "label": "scam"}
+{"id": 2, "text": "I am calling from Mumbai Cyber Cell. Your Aadhaar was used for money laundering. Do not disconnect this call and do not tell your family or you will be arrested.", "label": "scam"}
+{"id": 3, "text": "Your FedEx parcel is stuck at Delhi customs due to illegal items. Pay Rs 8500 clearance charges immediately or police will be informed.", "label": "scam"}
+{"id": 4, "text": "You have received a collect request of Rs 4999 from Flipkart cashback. Enter your UPI PIN to receive the money.", "label": "scam"}
+{"id": 5, "text": "Hiring part time! Earn Rs 8000 per day by rating hotels on Google Maps. Deposit Rs 2000 first to unlock tasks. Join Telegram group.", "label": "scam"}
+{"id": 6, "text": "Your PhonePe KYC has expired. Account will be suspended today. Download QuickSupport so our agent can help update it.", "label": "scam"}
+{"id": 7, "text": "Sir your SIM card will be disconnected within 2 hours due to illegal activity. Press 9 to talk to TRAI officer.", "label": "scam"}
+{"id": 8, "text": "Dear customer your PNB account is blocked, call 7000012345 immediately to reactivate, aapka account band ho jayega", "label": "scam"}
+{"id": 9, "text": "Hello this is Amazon customer care. A payment of Rs 49,999 for iPhone was made from your account. Press 1 to cancel or share OTP.", "label": "scam"}
+{"id": 10, "text": "Mere paas ek investment scheme hai, guaranteed 5x returns in 30 days. Send Rs 10000 in USDT to this wallet to join.", "label": "scam"}
+{"id": 11, "text": "You have a pending Rs 18,200 GST refund. Claim it at tinyurl.com/gst-refund-claim before it lapses.", "label": "scam"}
+{"id": 12, "text": "Hi it's Rohan from HR. I'm in a meeting and cannot talk. Buy 5 Amazon gift cards of Rs 2000 each and send me the codes now. Keep it confidential.", "label": "scam"}
+{"id": 13, "text": "Your Uber ride with Suresh is arriving in 3 minutes. OTP 4821 for this ride. Do not share with anyone except your driver.", "label": "safe"}
+{"id": 14, "text": "HDFC Bank: Rs 1,200 debited from a/c XX4521 on 22-Oct at Big Bazaar. If not done by you, call the number on your card.", "label": "safe"}
+{"id": 15, "text": "Your Zomato order is confirmed. Delivery in 30 minutes. Track on the app.", "label": "safe"}
+{"id": 16, "text": "Mom, I reached home safely. Will call you after dinner.", "label": "safe"}
+{"id": 17, "text": "Your Jio recharge of Rs 299 was successful. Validity till 20 Nov. Thank you for choosing Jio.", "label": "safe"}
+{"id": 18, "text": "Reminder: your LIC premium of Rs 4,500 is due on 30 Oct. Pay through the official LIC portal or branch.", "label": "safe"}
+{"id": 19, "text": "Hi, your interview is scheduled for Monday 11 AM at our Pune office. Please bring your resume. Regards, HR Infosys", "label": "safe"}
+{"id": 20, "text": "Booking confirmed: IndiGo 6E-203 Ahmedabad to Delhi on 28 Oct, 7:15 AM. Web check-in opens 48 hours before departure.", "label": "safe"}

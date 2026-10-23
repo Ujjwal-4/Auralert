@@ -1,0 +1,30 @@
+{"id": 1, "text": "Dear Customer, OTP for your transaction at Amazon India for Rs. 1,499 is 482910. Do NOT share this OTP with anyone. SBI never asks for OTP.", "expected_verdict": "safe", "label": "benign"}
+{"id": 2, "text": "Your package with tracking number 9400111899223190001234 has been delivered to your front porch. Thank you for shopping with Amazon.", "expected_verdict": "safe", "label": "benign"}
+{"id": 3, "text": "Your Swiggy order from Biryani Blues is arriving in 15 minutes. Delivery partner Ramesh is on his way.", "expected_verdict": "safe", "label": "benign"}
+{"id": 4, "text": "Hi Mom, I will reach home by 7 PM today. Please keep dinner ready.", "expected_verdict": "safe", "label": "benign"}
+{"id": 5, "text": "Reminder: Quarterly team sync meeting tomorrow at 10:30 AM via Google Meet. Link: meet.google.com/abc-defg-hij", "expected_verdict": "safe", "label": "benign"}
+{"id": 6, "text": "Your HDFC Bank Credit Card statement for the period ending 15 Oct has been generated. Total due: Rs 4,520. Pay by 05 Nov.", "expected_verdict": "safe", "label": "benign"}
+{"id": 7, "text": "Salary of Rs. 85,000 credited to your account XX1234 on 30-Sep-2026. Ref: Salary NEFT transfer.", "expected_verdict": "safe", "label": "benign"}
+{"id": 8, "text": "Hey Ujjwal, are we still meeting for badminton this Saturday at 6 AM?", "expected_verdict": "safe", "label": "benign"}
+{"id": 9, "text": "Your electricity bill for consumer no 10293847 is Rs 1,840. Due date 28 Oct. Pay via official portal at https://www.tatapower.com", "expected_verdict": "safe", "label": "benign"}
+{"id": 10, "text": "Authentication code: 829104 for Microsoft account login. If you did not request this code, someone else is trying to sign in.", "expected_verdict": "safe", "label": "benign"}
+{"id": 11, "text": "URGENT: Your SBI bank account will be blocked today within 2 hours due to pending KYC. Click here to verify immediately: http://sbi-kyc-verify.top/login", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 12, "text": "Congratulations! You won cashback of Rs 2,500. Open PhonePe or GooglePay and approve the collect request, enter your UPI PIN to receive money.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 13, "text": "This is Inspector Vijay from CBI Crime Branch. A digital arrest warrant has been issued in your name for illegal money laundering. Do not disconnect Skype call.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 14, "text": "Your FedEx parcel from Taiwan was seized at Mumbai airport containing 200g MDMA drugs. Pay Rs 45,000 customs clearance penalty immediately to avoid arrest.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 15, "text": "Earn Rs 3000 to 5000 daily from home! Simple YouTube video like and subscribe tasks. Deposit Rs 1,000 VIP security fee on Telegram to unlock first payout.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 16, "text": "MICROSOFT CRITICAL ALERT: Your Windows computer is infected with Trojan Spyware. Call toll-free 1-800-419-0231 and download AnyDesk for remote fix.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 17, "text": "Bank manager speaking: An unauthorized debit of Rs 49,999 was attempted. To cancel this transaction, immediately tell me your debit card CVV and ATM PIN.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 18, "text": "URGENT: I am in a board meeting and cannot talk. Go to the nearest store, buy 5 Apple Gift Cards worth $100 each, and email me the scratched voucher codes.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 19, "text": "KBC Lucky Draw winner! You have won Rs 25 Lakh in Kaun Banega Crorepati WhatsApp lottery. Call our manager to claim your prize after paying registration fee.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 20, "text": "Guaranteed 50 percent daily returns on our VIP crypto trading platform. Deposit USDT into this wallet now to double your funds within 24 hours.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 21, "text": "Dear user, your electricity power will be disconnected tonight at 9:30 PM because previous month bill was not updated. Call electricity officer immediately.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 22, "text": "Tax refund of Rs 18,500 approved. Fill details and verify your netbanking password to credit refund: http://incometax-refund-gov.xyz/claim", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 23, "text": "Aapka SBI account aaj band ho jayega. Turant KYC update karwayen aur share karein OTP jo abhi aaya hai.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 24, "text": "Delhi Police Crime Branch se bol rahe hain. Aapke naam par arrest warrant nikla hai, call katna mat warna police ghar bhej denge.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 25, "text": "Ghar baithe kamayein 3000 se 5000 rozana. YouTube video like karke paise kamayein. Telegram join karein.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 26, "text": "KBC lottery lag gayi hai aapki 25 lakh ki. Inaam claim karne ke liye registration fee turant bhejo.", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 27, "text": "Check your account verification link: http://sbi-kyc-update.top/login", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 28, "text": "Amazon order support update: http://amaz0n-support.xyz/help", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 29, "text": "Claim your Paytm wallet bonus: http://paytm-cashback.live/claim", "expected_verdict": "likely_scam", "label": "scam"}
+{"id": 30, "text": "Urgent verification required: https://xn--appl-43a.com/signin", "expected_verdict": "likely_scam", "label": "scam"}

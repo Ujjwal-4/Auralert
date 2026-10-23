@@ -1,0 +1,168 @@
+{
+  "categories": [
+    {
+      "id": "kyc_otp",
+      "name": "KYC Suspension & OTP Harvesting",
+      "weight": 35,
+      "patterns": [
+        "\\bkyc\\b.*(block|suspend|update|expire|deactivat)",
+        "(block|suspend|update|expire|deactivat).*\\bkyc\\b",
+        "verify.*\\bkyc\\b",
+        "\\baadhaar\\b.*(link|update|suspend)",
+        "\\bpan\\b.*card.*(link|update|deactivat)",
+        "share.*otp.*(verify|unblock|cancel)",
+        "tell.*me.*(the)?.*code.*sent",
+        "kyc\\s+(update|karo|karwayen)",
+        "account\\s+(band|block)\\s+ho\\s+(jayega|raha\\s+hai)",
+        "otp\\s+(share|batao|bhejo)"
+      ],
+      "explanation": "Scammers claim your account or SIM card will be blocked immediately unless you update KYC or share a verification OTP.",
+      "what_to_do": "Never share OTP or banking passwords with anyone over the phone or SMS. Real banks never ask for OTP."
+    },
+    {
+      "id": "upi_collect_request",
+      "name": "UPI Collect Request & Fake Cashback",
+      "weight": 40,
+      "patterns": [
+        "enter.*(upi)?.*pin.*to.*receive",
+        "approve.*collect.*request",
+        "accept.*request.*in.*(gpay|phonepe|paytm)",
+        "pin\\s+enter\\s+karo\\s+paise\\s+milenge",
+        "collect\\s+request\\s+approve\\s+karo",
+        "cashback\\s+(receive|claim)\\s+karne\\s+ke\\s+liye\\s+pin",
+        "won.*cashback.*claim.*now"
+      ],
+      "explanation": "Fraudsters send collect payment requests disguised as cashback or refunds, asking you to enter your UPI PIN to 'receive' money.",
+      "what_to_do": "Remember: You NEVER enter your UPI PIN to receive money. PIN is strictly required only when sending money."
+    },
+    {
+      "id": "digital_arrest",
+      "name": "Digital Arrest & Law Enforcement Impersonation",
+      "weight": 45,
+      "patterns": [
+        "digital\\s+arrest",
+        "(cbi|ed|police|narcotics|customs|crime\\s+branch|supreme\\s+court).*arrest\\s+warrant",
+        "do\\s+not\\s+(disconnect|cut)\\s+(the)?.*call",
+        "stay\\s+on\\s+(the)?.*(video|skype|call)",
+        "money\\s+laundering.*(case|investigation)",
+        "police\\s+(station|officer)\\s+se\\s+bol\\s+rahe\\s+hain",
+        "arrest\\s+kar\\s+lenge",
+        "call\\s+katna\\s+mat"
+      ],
+      "explanation": "Impostors pose as police, CBI, or customs officials claiming you are under 'digital arrest' for illegal parcels or money laundering.",
+      "what_to_do": "There is no such legal procedure as 'digital arrest'. Law enforcement never conducts trials or demands deposits over video calls. Hang up immediately."
+    },
+    {
+      "id": "courier_customs",
+      "name": "Courier Seizure & Customs Penalty",
+      "weight": 35,
+      "patterns": [
+        "(fedex|dhl|customs|airport).*parcel.*(seized|drugs|passport|illegal)",
+        "parcel.*contained.*contraband",
+        "customs\\s+clearance\\s+(fee|penalty|tax)",
+        "parcel\\s+mein\\s+(drugs|passports)\\s+mile\\s+hain",
+        "customs\\s+se\\s+clear\\s+karane\\s+ke\\s+liye\\s+paise"
+      ],
+      "explanation": "Scammers claim an overseas parcel sent in your name was seized containing contraband (drugs, passports), demanding clearance penalties.",
+      "what_to_do": "Do not send money or verify personal details. Legitimate postal and customs agencies issue formal written notices, never demands by phone."
+    },
+    {
+      "id": "fake_job",
+      "name": "Work From Home & Task/Review Scam",
+      "weight": 30,
+      "patterns": [
+        "earn.*(3000|5000|10000|daily|per\\s+day).*from\\s+home",
+        "(youtube|google\\s+maps).*like.*review.*subscribe.*earn",
+        "part\\s+time\\s+job.*telegram",
+        "ghar\\s+baithe\\s+(kamayein|kamana)",
+        "video\\s+like\\s+karke\\s+paise",
+        "deposit.*security.*fee.*to.*unlock.*earnings"
+      ],
+      "explanation": "Offers enticing pay for simple tasks like liking videos, then traps victims in VIP prepaid deposit cycles.",
+      "what_to_do": "Legitimate employers never demand advance security deposits or task fees. Cease communication and do not transfer funds."
+    },
+    {
+      "id": "tech_support",
+      "name": "Tech Support & Remote Access Tool Impersonation",
+      "weight": 35,
+      "patterns": [
+        "(microsoft|apple|windows).*infected.*(virus|trojan|malware)",
+        "download.*(anydesk|teamviewer|quicksupport|rustdesk)",
+        "remote\\s+access.*to\\s+fix",
+        "call\\s+toll\\s+free.*1-?8[0-9]{2}",
+        "computer.*compromised.*call\\s+support"
+      ],
+      "explanation": "Fake popups or callers claim your system has critical viruses and instruct you to install remote access tools like AnyDesk.",
+      "what_to_do": "Never install remote desktop tools (AnyDesk, TeamViewer) at the request of an unverified caller. It gives them complete control over your device."
+    },
+    {
+      "id": "bank_impersonation",
+      "name": "Bank Impersonation & Card Security Trap",
+      "weight": 35,
+      "patterns": [
+        "your\\s+account.*(blocked|debited|hacked)",
+        "unauthorized\\s+transaction\\s+of\\s+rs",
+        "verify.*(cvv|card\\s+number|expiry|atm\\s+pin)",
+        "bank\\s+manager\\s+speaking",
+        "bank\\s+se\\s+bol\\s+raha\\s+hoon",
+        "khata\\s+band\\s+kar\\s+diya\\s+gaya\\s+hai"
+      ],
+      "explanation": "Scammers pose as bank representatives reporting fraudulent card activity to trick you into revealing CVV, card numbers, or ATM PINs.",
+      "what_to_do": "Banks will never ask for your card CVV or ATM PIN. Call your bank using the trusted number printed on the back of your card."
+    },
+    {
+      "id": "gift_card_crypto",
+      "name": "Gift Card & Crypto Payment Pressure",
+      "weight": 40,
+      "patterns": [
+        "(pay|settle|buy|purchase).*(gift\\s+card|apple\\s+card|google\\s+play|steam)",
+        "buy.*(amazon|apple).*cards",
+        "gift\\s+card.*(tax|fine|penalty|settle|pay)",
+        "deposit.*into.*bitcoin\\s+atm",
+        "pay\\s+via\\s+crypto.*wallet"
+      ],
+      "explanation": "Callers demand emergency settlement using gift card voucher codes or crypto kiosks, which cannot be refunded or traced.",
+      "what_to_do": "No official company, utility, or government entity accepts gift cards or cryptocurrency as payment. This is always a scam."
+    },
+    {
+      "id": "prize_lottery",
+      "name": "Lottery & Lucky Draw Prize Fraud",
+      "weight": 30,
+      "patterns": [
+        "(kbc|kaun\\s+banega\\s+crorepati|lottery|lucky\\s+draw).*winner",
+        "won.*(25\\s+lakh|car|prize|cash)",
+        "pay.*registration.*fee.*to.*claim",
+        "lottery\\s+lag\\s+gayi\\s+hai",
+        "inaam\\s+jeet\\s+gaye\\s+hain"
+      ],
+      "explanation": "Claims you won a massive lottery or game show prize, requiring advance processing or tax payments to release the money.",
+      "what_to_do": "If you did not enter a lottery, you did not win. You never have to pay money to claim a legitimate prize."
+    },
+    {
+      "id": "romance_investment",
+      "name": "Romance & Guaranteed Investment Scheme",
+      "weight": 35,
+      "patterns": [
+        "guaranteed.*(profit|return|daily.*percent)",
+        "send.*parcel.*customs.*stuck.*money",
+        "crypto\\s+trading\\s+platform.*high\\s+yield",
+        "kam\\s+paisa\\s+lagao.*zyada\\s+kamayein"
+      ],
+      "explanation": "Builds trust over social platforms before introducing fraudulent high-yield investment websites or fake customs fees for romantic gifts.",
+      "what_to_do": "Never invest in unknown platforms recommended by online acquaintances. High guaranteed returns are a hallmark of Ponzi fraud."
+    },
+    {
+      "id": "tax_refund",
+      "name": "Fake Tax / GST Refund",
+      "weight": 35,
+      "patterns": [
+        "(income\\s+tax|itr|gst|tax)\\s+refund.*(approved|pending|claim|click|credited|lapse)",
+        "refund\\s+of\\s+(rs\\.?|inr|₹)\\s*[\\d,]+.*(claim|approved|pending)",
+        "(claim|click).*(tax|gst|itr)\\s+refund",
+        "(tax|gst)\\s+refund.*(lapse|expire|before)"
+      ],
+      "explanation": "Scammers pose as the tax department promising a refund so you click a link and enter bank or card details.",
+      "what_to_do": "Tax refunds are only processed through the official income tax e-filing portal; never claim them through an SMS link."
+    }
+  ]
+}

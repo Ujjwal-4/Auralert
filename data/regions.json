@@ -1,0 +1,295 @@
+{
+  "regions": {
+    "IN": {
+      "country": "India",
+      "currency": "INR",
+      "helpline": "1930",
+      "portal_url": "https://cybercrime.gov.in",
+      "portal_name": "National Cyber Crime Reporting Portal",
+      "sms_spam_reporting": "Report on Chakshu portal (sancharsaathi.gov.in/sfc) or forward to 1909",
+      "verify_before_use": true,
+      "notice": "Verify helpline numbers and portal URLs before filing.",
+      "urgent_banking_window_hours": 2,
+      "payment_guidance": {
+        "upi": [
+          {
+            "order": 1,
+            "action": "Call National Cybercrime Helpline 1930 immediately",
+            "why": "Reporting within the golden hour enables law enforcement and banks to freeze fraudulent transfers across beneficiary accounts.",
+            "official_channel": "Helpline 1930 / cybercrime.gov.in"
+          },
+          {
+            "order": 2,
+            "action": "Contact your bank to report unauthorized UPI debit and block UPI ID",
+            "why": "Prevents recurring collect debits or compromised credentials from being reused.",
+            "official_channel": "Official bank emergency helpline"
+          },
+          {
+            "order": 3,
+            "action": "Report the transaction inside your UPI app (GPay / PhonePe / Paytm)",
+            "why": "Flags the fraudster's UPI ID / VPA across the NPCI payment network.",
+            "official_channel": "Payment app in-app dispute resolution"
+          }
+        ],
+        "card": [
+          {
+            "order": 1,
+            "action": "Immediately block your debit/credit card via bank mobile app or phone",
+            "why": "Prevents any further fraudulent transactions on the compromised card.",
+            "official_channel": "Bank card hotlisting number"
+          },
+          {
+            "order": 2,
+            "action": "File a dispute/chargeback claim with your card issuer",
+            "why": "Initiates card scheme dispute process for unauthorized transactions.",
+            "official_channel": "Bank fraud and dispute department"
+          },
+          {
+            "order": 3,
+            "action": "Report incident to National Cybercrime Helpline 1930",
+            "why": "Registers formal police cybercrime complaint acknowledged by banks.",
+            "official_channel": "Helpline 1930 / cybercrime.gov.in"
+          }
+        ],
+        "bank_transfer": [
+          {
+            "order": 1,
+            "action": "Call National Cybercrime Helpline 1930 immediately",
+            "why": "Enables inter-bank lien marking to stop funds from being withdrawn at destination bank.",
+            "official_channel": "Helpline 1930 / cybercrime.gov.in"
+          },
+          {
+            "order": 2,
+            "action": "Contact your bank's branch manager to initiate IMPS/NEFT/RTGS recall",
+            "why": "Formal request from remitter bank to beneficiary bank to reverse or freeze funds.",
+            "official_channel": "Home branch / official nodal officer"
+          }
+        ],
+        "crypto": [
+          {
+            "order": 1,
+            "action": "Save transaction hash (txid), destination wallet address, and chat records",
+            "why": "Immutable blockchain records are essential evidence for cyber cell tracking.",
+            "official_channel": "Crypto wallet / exchange records"
+          },
+          {
+            "order": 2,
+            "action": "File formal complaint at cybercrime.gov.in",
+            "why": "Cyber cell coordinates with domestic crypto exchanges to blacklist fraudulent addresses.",
+            "official_channel": "cybercrime.gov.in"
+          }
+        ],
+        "gift_card": [
+          {
+            "order": 1,
+            "action": "Contact gift card merchant support immediately with card numbers and receipt",
+            "why": "If the scammer has not yet redeemed the voucher code, the issuer can freeze the remaining balance.",
+            "official_channel": "Official merchant support (Amazon/Apple/Google)"
+          },
+          {
+            "order": 2,
+            "action": "Report incident to cybercrime helpline 1930",
+            "why": "Creates an official record of organized gift card extortion.",
+            "official_channel": "Helpline 1930"
+          }
+        ],
+        "none": [
+          {
+            "order": 1,
+            "action": "Block the sender number and do not respond further",
+            "why": "Responding signals an active number to scammers, leading to coordinated follow-up attempts.",
+            "official_channel": "Phone / messaging app block feature"
+          },
+          {
+            "order": 2,
+            "action": "Report suspected spam number on Chakshu portal (sancharsaathi.gov.in)",
+            "why": "Assists Department of Telecommunications in revoking fraudulent mobile connections.",
+            "official_channel": "Chakshu / Telecom regulatory portal"
+          }
+        ]
+      }
+    },
+    "US": {
+      "country": "United States",
+      "currency": "USD",
+      "helpline": "1-877-382-4357",
+      "portal_url": "https://reportfraud.ftc.gov",
+      "portal_name": "Federal Trade Commission (FTC) Report Fraud",
+      "sms_spam_reporting": "Forward suspicious SMS to 7726 (SPAM)",
+      "verify_before_use": true,
+      "notice": "Verify helpline numbers and portal URLs before filing.",
+      "urgent_banking_window_hours": 24,
+      "payment_guidance": {
+        "upi": [
+          {
+            "order": 1,
+            "action": "Contact your peer-to-peer payment provider (Zelle/Venmo/CashApp) immediately",
+            "why": "Report unauthorized account access or fraudulent transfer request.",
+            "official_channel": "P2P App Fraud Support"
+          },
+          {
+            "order": 2,
+            "action": "File report with FTC at reportfraud.ftc.gov",
+            "why": "Contributes to federal investigations and fraud trend enforcement.",
+            "official_channel": "reportfraud.ftc.gov"
+          }
+        ],
+        "card": [
+          {
+            "order": 1,
+            "action": "Call your card issuer's fraud department to cancel card and dispute charges",
+            "why": "Under Regulation E and FCBA, prompt reporting limits consumer liability for unauthorized charges.",
+            "official_channel": "Card issuer customer service"
+          },
+          {
+            "order": 2,
+            "action": "File complaint with FTC at reportfraud.ftc.gov",
+            "why": "Provides legal documentation of identity/payment compromise.",
+            "official_channel": "reportfraud.ftc.gov"
+          }
+        ],
+        "bank_transfer": [
+          {
+            "order": 1,
+            "action": "Contact your bank immediately to request a wire recall or freeze",
+            "why": "Wire transfers must be recalled before settlement completes at intermediary banks.",
+            "official_channel": "Bank wire department"
+          },
+          {
+            "order": 2,
+            "action": "File an IC3 complaint with the FBI at ic3.gov",
+            "why": "FBI's Recovery Asset Team (RAT) can assist in freezing international and large wire transfers.",
+            "official_channel": "ic3.gov"
+          }
+        ],
+        "crypto": [
+          {
+            "order": 1,
+            "action": "File complaint with FBI Internet Crime Complaint Center at ic3.gov",
+            "why": "IC3 coordinates with specialized federal cryptocurrency tracing teams.",
+            "official_channel": "ic3.gov"
+          }
+        ],
+        "gift_card": [
+          {
+            "order": 1,
+            "action": "Contact the company that issued the gift card right away",
+            "why": "Retailers may freeze cards or refund unredeemed balances.",
+            "official_channel": "Retailer gift card department"
+          },
+          {
+            "order": 2,
+            "action": "Report the gift card scam to reportfraud.ftc.gov",
+            "why": "Helps law enforcement track criminal laundering syndicates.",
+            "official_channel": "reportfraud.ftc.gov"
+          }
+        ],
+        "none": [
+          {
+            "order": 1,
+            "action": "Block the sender and report spam SMS to 7726",
+            "why": "Alerts carriers to block the scammer's originating VoIP number.",
+            "official_channel": "Carrier 7726 SMS forward"
+          },
+          {
+            "order": 2,
+            "action": "Report to FTC at reportfraud.ftc.gov",
+            "why": "Aids national consumer protection enforcement.",
+            "official_channel": "reportfraud.ftc.gov"
+          }
+        ]
+      }
+    },
+    "UK": {
+      "country": "United Kingdom",
+      "currency": "GBP",
+      "helpline": "0300 123 2040",
+      "portal_url": "https://www.reportfraud.police.uk",
+      "portal_name": "Report Fraud (City of London Police; replaced Action Fraud on 4 Dec 2025)",
+      "sms_spam_reporting": "Forward suspicious SMS to 7726",
+      "verify_before_use": true,
+      "notice": "Verify helpline numbers and portal URLs before filing.",
+      "urgent_banking_window_hours": 24,
+      "payment_guidance": {
+        "upi": [
+          {
+            "order": 1,
+            "action": "Contact your UK bank immediately under Contingent Reimbursement Model (CRM)",
+            "why": "Authorized Push Payment (APP) scam protections may entitle victims to reimbursement.",
+            "official_channel": "Bank fraud helpline"
+          },
+          {
+            "order": 2,
+            "action": "Report incident to Report Fraud (0300 123 2040)",
+            "why": "Generates a police crime reference number needed for bank reimbursement.",
+            "official_channel": "reportfraud.police.uk"
+          }
+        ],
+        "card": [
+          {
+            "order": 1,
+            "action": "Contact card provider to freeze card and request chargeback or Section 75 claim",
+            "why": "Statutory consumer protections cover credit card transactions over £100.",
+            "official_channel": "Bank fraud team"
+          },
+          {
+            "order": 2,
+            "action": "Report to Report Fraud",
+            "why": "Provides official crime reference documentation.",
+            "official_channel": "reportfraud.police.uk"
+          }
+        ],
+        "bank_transfer": [
+          {
+            "order": 1,
+            "action": "Call your bank immediately and inform them of fraudulent transfer",
+            "why": "UK banks participate in the CRM code to attempt immediate fund recall.",
+            "official_channel": "Bank fraud line"
+          },
+          {
+            "order": 2,
+            "action": "Report to Report Fraud online or call 0300 123 2040",
+            "why": "Police national database logs scam beneficiary sort codes.",
+            "official_channel": "reportfraud.police.uk"
+          }
+        ],
+        "crypto": [
+          {
+            "order": 1,
+            "action": "Report to Report Fraud and the Financial Conduct Authority (FCA)",
+            "why": "FCA maintains a warning list of unauthorized crypto investment firms.",
+            "official_channel": "fca.org.uk / reportfraud.police.uk"
+          }
+        ],
+        "gift_card": [
+          {
+            "order": 1,
+            "action": "Notify the gift card merchant support team immediately",
+            "why": "Merchant can investigate and void compromised voucher balances.",
+            "official_channel": "Gift card retailer support"
+          },
+          {
+            "order": 2,
+            "action": "Report to Report Fraud",
+            "why": "Crime reference number required for documentation.",
+            "official_channel": "reportfraud.police.uk"
+          }
+        ],
+        "none": [
+          {
+            "order": 1,
+            "action": "Block number and forward suspicious SMS to 7726",
+            "why": "Free national service for UK mobile networks to identify spam.",
+            "official_channel": "Forward SMS to 7726"
+          },
+          {
+            "order": 2,
+            "action": "Forward phishing emails to report@phishing.gov.uk",
+            "why": "National Cyber Security Centre (NCSC) removes malicious host servers.",
+            "official_channel": "NCSC Suspicious Email Reporting Service"
+          }
+        ]
+      }
+    }
+  }
+}

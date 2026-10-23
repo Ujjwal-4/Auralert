@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AURALERT — Voice-first scam defense tool for Alexa+ that listens to suspicious calls, checks family safe words, links repeat-offender indicators, and prepares incident reports.">
+    <title>AURALERT — Voice-First Scam Defense</title>
+    <link rel="stylesheet" href="/styles.css?v=8.0">
+</head>
+<body>
+    <div class="app-container" id="app">
+        <!-- Header -->
+        <header class="app-header" role="banner">
+            <div class="brand-group">
+                <div class="brand-title-wrap">
+                    <span class="shield-icon" aria-hidden="true">📡</span>
+                    <h1 class="brand-title">AURALERT</h1>
+                    <span class="version-badge">v1.2</span>
+                </div>
+                <div class="disclaimer-badge" role="note" aria-label="Disclaimer">
+                    Simulated Alexa+ experience — not an official Alexa client
+                </div>
+            </div>
+
+            <div class="header-controls">
+                <div class="control-item">
+                    <button id="live-call-btn" class="btn btn-live-call" title="Launch Live Call Guard on Speakerphone">
+                        📞 Live Call Guard
+                    </button>
+                </div>
+
+                <div class="control-item">
+                    <button id="lang-toggle-btn" class="btn btn-lang" title="Toggle English / Hindi Voice Mode">
+                        <span id="lang-icon" aria-hidden="true">🌐</span>
+                        <span id="lang-label">हिन्दी</span>
+                    </button>
+                </div>
+
+                <div class="control-item">
+                    <button id="drill-mode-btn" class="btn btn-drill" title="Launch Elder Scam Training Drill">
+                        🎯 Elder Scam Drill
+                    </button>
+                </div>
+
+                <div class="control-item">
+                    <label for="region-select" class="visually-hidden">Select Region</label>
+                    <select id="region-select" class="select-dropdown" aria-label="Select Jurisdiction Region">
+                        <option value="IN" selected>🇮🇳 India (1930)</option>
+                        <option value="US">🇺🇸 United States (FTC/IC3)</option>
+                        <option value="UK">🇬🇧 United Kingdom (Report Fraud)</option>
+                    </select>
+                </div>
+
+                <div class="control-item">
+                    <span id="brain-badge" class="badge badge-brain" title="Active Brain Engine">
+                        Brain: Initializing...
+                    </span>
+                </div>
+
+                <div class="control-item">
+                    <button id="tts-toggle" class="btn btn-secondary" aria-pressed="true" title="Toggle Spoken Voice Audio">
+                        <span id="tts-icon" aria-hidden="true">🔊</span>
+                        <span id="tts-label">Voice On</span>
+                    </button>
+                </div>
+
+                <div class="control-item">
+                    <button id="reset-btn" class="btn btn-secondary" title="Reset conversation and case file">
+                        ↺ Reset Demo
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Cyber Telemetry Status Ticker -->
+        <div class="telemetry-bar">
+            <div class="telemetry-item"><span class="tele-dot green"></span> <strong>Streamable HTTP MCP</strong> (spec 2025-11-25)</div>
+            <div class="telemetry-item"><span class="tele-dot blue"></span> <strong>10 Defensive MCP Tools</strong> Mounted</div>
+            <div class="telemetry-item"><span class="tele-dot purple"></span> <strong>Zero-Network Static Engine</strong> (Regex & Punycode)</div>
+            <div class="telemetry-item"><span class="tele-dot green"></span> <strong>Family Safety Net:</strong> Active Protection</div>
+        </div>
+
+        <!-- Main Content Area: Left = Conversation, Right = Case File -->
+        <main class="main-grid" role="main">
+            <!-- Left Pane: Conversation Pane -->
+            <section class="pane conversation-pane" aria-labelledby="chat-heading">
+                <div class="pane-header">
+                    <div class="pane-title-group">
+                        <h2 id="chat-heading" class="pane-title">Voice Assistant Console</h2>
+                        <span class="sub-caption">Voice-First Scam Detection & Elder Care Terminal</span>
+                    </div>
+                    <div class="alexa-halo-mini" id="alexa-halo-mini" title="Alexa+ Audio Halo">
+                        <span class="halo-circle"></span>
+                        <span class="status-indicator" id="voice-status">Ready</span>
+                    </div>
+                </div>
+
+                <!-- Chat History Scroll Container -->
+                <div class="chat-container" id="chat-history" role="log" aria-live="polite" aria-atomic="false">
+                    <!-- Initial Welcome Message -->
+                    <div class="message-bubble assistant-bubble">
+                        <div class="bubble-header">
+                            <span class="avatar" aria-hidden="true">🎙️</span>
+                            <span class="sender-name">Alexa+ (AURALERT)</span>
+                        </div>
+                        <div class="bubble-body">
+                            <p>I'm listening. Describe any suspicious phone call, SMS, email, or link you received. You can speak out loud or type below.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick-Start Scenario Chips -->
+                <div class="quick-chips-bar" aria-label="Quick-start example prompts">
+                    <span class="chips-label">Quick Scenarios:</span>
+                    <button class="chip-btn chip-drill" data-action="drill" data-text="Alexa, start a scam drill for elder training.">
+                        🎯 Elder Scam Drill
+                    </button>
+                    <button class="chip-btn chip-family" data-action="family" data-text="Please notify my family immediately about this scam call.">
+                        👨‍👩‍👧 Family Emergency Alert
+                    </button>
+                    <button class="chip-btn" data-text="I got a call from CBI saying I am under digital arrest for an illegal parcel.">
+                        📞 "Digital Arrest" Call
+                    </button>
+                    <button class="chip-btn" data-text="Check this link: http://sbi-kyc-verify.top/login">
+                        🔗 Fake Bank Link
+                    </button>
+                    <button class="chip-btn" data-text="I sent Rs 15,000 via UPI to a scammer collect request. What should I do?">
+                        💸 Lost Money via UPI
+                    </button>
+                    <button class="chip-btn" data-text="OTP for your Amazon transaction is 948210. Do NOT share with anyone. SBI never asks for OTP.">
+                        ✅ Legitimate Bank OTP
+                    </button>
+                </div>
+
+                <!-- Voice & Text Input Controls -->
+                <div class="input-controls-wrap">
+                    <div class="voice-button-container">
+                        <button id="mic-btn" class="btn-mic" aria-label="Click to Speak" title="Click to speak out loud">
+                            <span class="mic-icon" aria-hidden="true">🎙️</span>
+                            <span class="mic-pulse" aria-hidden="true"></span>
+                        </button>
+                        <span id="mic-status-label" class="mic-label">Click mic or type</span>
+                    </div>
+
+                    <form id="chat-form" class="chat-input-form" role="search">
+                        <label for="user-text-input" class="visually-hidden">Type suspicious message</label>
+                        <input
+                            type="text"
+                            id="user-text-input"
+                            class="text-input"
+                            placeholder="Describe a suspicious call, SMS, or paste a link..."
+                            autocomplete="off"
+                            required
+                        >
+                        <button type="submit" id="send-btn" class="btn btn-primary">
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Right Pane: Live Case File & Risk Meter -->
+            <aside class="pane case-pane" aria-labelledby="case-heading">
+                <div class="pane-header">
+                    <h2 id="case-heading" class="pane-title">Incident Case File</h2>
+                    <span id="case-id-badge" class="badge badge-case">NO ACTIVE CASE</span>
+                </div>
+
+                <div class="case-body">
+                    <!-- Family Emergency Safety Net Card -->
+                    <section class="card family-card" id="family-card" aria-labelledby="family-heading">
+                        <div class="card-header">
+                            <h3 id="family-heading" class="card-title">👨‍👩‍👧 Family Safety Net</h3>
+                            <span id="family-status-badge" class="badge badge-family-active">🟢 Active Shield</span>
+                        </div>
+                        <div class="family-body-content">
+                            <div class="contact-pill">
+                                <div class="contact-avatar">👤</div>
+                                <div class="contact-info">
+                                    <span class="contact-name">Rohan (Son)</span>
+                                    <span class="contact-meta">+91 98765 43210 • Primary Caregiver</span>
+                                </div>
+                                <span class="contact-channel-badge">WhatsApp 💬</span>
+                            </div>
+                            <div id="family-alert-dispatch-wrap" class="family-alert-dispatch-wrap" style="display: none;">
+                                <div class="dispatch-header">
+                                    <span class="dispatch-badge">🚨 FAMILY ALERT PREPARED (DEMO, NOT SENT)</span>
+                                    <span class="dispatch-time" id="dispatch-time">Just now</span>
+                                </div>
+                                <p id="dispatch-msg-preview" class="dispatch-msg-preview"></p>
+                            </div>
+
+                            <!-- Family Safe-Word Shield -->
+                            <div class="safe-word-subcard" id="safe-word-subcard">
+                                <div class="safe-word-subcard-header">
+                                    <span class="safe-word-icon" aria-hidden="true">🔑</span>
+                                    <strong class="safe-word-label">Safe-Word Shield:</strong>
+                                    <span id="safe-word-active-pill" class="safe-word-active-pill" title="Configured Family Code Word">Son: "Falcon"</span>
+                                </div>
+                                <div class="safe-word-controls">
+                                    <input
+                                        type="text"
+                                        id="safe-word-input"
+                                        class="safe-word-input"
+                                        placeholder="Verify code word from caller..."
+                                        aria-label="Candidate Family Safe Word"
+                                    >
+                                    <button id="verify-safe-word-btn" class="btn btn-sm btn-safe-word" title="Verify safe word against family secret">
+                                        Verify
+                                    </button>
+                                </div>
+                                <div id="safe-word-feedback" class="safe-word-feedback" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Threat Risk Meter -->
+                    <section class="card risk-card" aria-labelledby="risk-meter-heading">
+                        <div class="card-header">
+                            <h3 id="risk-meter-heading" class="card-title">Threat Assessment</h3>
+                            <span id="risk-verdict-tag" class="verdict-tag verdict-neutral">UNKNOWN</span>
+                        </div>
+                        <div id="threat-category-wrap" class="threat-category-wrap" style="display: none;">
+                            <span id="threat-category-icon" class="threat-cat-icon">🚨</span>
+                            <div class="threat-cat-details">
+                                <span class="threat-cat-label">Threat Classification</span>
+                                <h4 id="threat-category-name" class="threat-cat-name">General Fraud</h4>
+                            </div>
+                        </div>
+                        <div class="risk-meter-wrap">
+                            <div class="risk-meter-bar" role="progressbar" id="risk-bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                        </div>
+                        <div class="risk-meter-labels">
+                            <span class="label-safe">Safe (0-29)</span>
+                            <span class="label-suspicious">Suspicious (30-59)</span>
+                            <span class="label-danger">Likely Scam (60-100)</span>
+                        </div>
+                        <p id="risk-score-text" class="risk-score-text">Score: 0 / 100</p>
+                    </section>
+
+                    <!-- Red Flags Detected -->
+                    <section class="card flags-card" aria-labelledby="flags-heading">
+                        <h3 id="flags-heading" class="card-title">Security Red Flags & Signals</h3>
+                        <div id="red-flags-container" class="flags-container">
+                            <p class="empty-state">No red flags logged yet.</p>
+                        </div>
+                    </section>
+
+                    <!-- Next Steps & Remediation Checklist -->
+                    <section class="card steps-card" aria-labelledby="steps-heading">
+                        <div class="card-header">
+                            <h3 id="steps-heading" class="card-title">Official Next Steps</h3>
+                            <span id="urgency-badge" class="badge badge-urgency">Normal</span>
+                        </div>
+                        <ol id="next-steps-list" class="steps-list">
+                            <li class="empty-state">Next steps will appear once an incident is reported.</li>
+                        </ol>
+                    </section>
+
+                    <!-- Evidence Timeline -->
+                    <section class="card timeline-card" aria-labelledby="timeline-heading">
+                        <h3 id="timeline-heading" class="card-title">Evidence & Case Timeline</h3>
+                        <div id="timeline-container" class="timeline-container">
+                            <p class="empty-state">Timeline is empty.</p>
+                        </div>
+                    </section>
+
+                    <!-- Report Generation & Threat Intel Section -->
+                    <section class="card report-card">
+                        <div class="report-actions">
+                            <button id="view-report-btn" class="btn btn-secondary btn-block" disabled>
+                                📄 View Complaint Report
+                            </button>
+                            <button id="export-intel-btn" class="btn btn-intel btn-block" title="Download Threat Intelligence Indicators as STIX-compatible JSON">
+                                🛡️ Export Threat Intel Feed (JSON)
+                            </button>
+                        </div>
+                    </section>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Elder Scam Drill Modal -->
+        <div id="drill-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="drill-modal-title" hidden style="display: none;">
+            <div class="modal-content drill-modal-content">
+                <div class="modal-header">
+                    <h3 id="drill-modal-title">🎯 Elder Scam Practice Drill</h3>
+                    <button id="close-drill-modal-btn" class="btn-close" aria-label="Close drill modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="drill-intro-banner">
+                        <p><strong>Interactive Voice Defense Training for Seniors:</strong> Practice recognizing and defusing real scam scenarios in a safe environment.</p>
+                    </div>
+
+                    <div class="drill-scenario-picker">
+                        <label for="drill-scenario-select"><strong>Choose Training Drill:</strong></label>
+                        <div class="picker-row">
+                            <select id="drill-scenario-select" class="select-dropdown">
+                                <option value="electricity_bill">⚡ Electricity Disconnection Threat</option>
+                                <option value="digital_arrest">🚨 Digital Arrest Police Extortion</option>
+                                <option value="bank_kyc_otp">🏦 Bank KYC & OTP Harvesting</option>
+                                <option value="courier_customs">📦 FedEx Customs Contraband Detention</option>
+                            </select>
+                            <button id="start-drill-action-btn" class="btn btn-primary">Start Voice Drill</button>
+                        </div>
+                    </div>
+
+                    <div id="drill-active-container" class="drill-active-container" style="display: none;">
+                        <div class="drill-prompt-box">
+                            <div class="caller-banner">
+                                <span class="caller-pulse-dot"></span>
+                                <span class="drill-scammer-tag">📞 SIMULATED CALLER SAYS:</span>
+                            </div>
+                            <blockquote id="drill-scammer-text" class="drill-scammer-text"></blockquote>
+                        </div>
+
+                        <div class="drill-response-options">
+                            <p class="drill-tip-heading"><strong>Say your response out loud (or click a quick action):</strong></p>
+                            <div class="drill-choice-chips" id="drill-choice-chips">
+                                <!-- Populated dynamically based on scenario -->
+                            </div>
+                        </div>
+
+                        <div id="drill-score-result" class="drill-score-result" style="display: none;">
+                            <div class="score-trophy" id="score-trophy">🏆</div>
+                            <div class="score-details">
+                                <h4 id="score-title" class="score-title">Score: 100 / 100 — PASSED</h4>
+                                <p id="score-feedback" class="score-feedback"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="retry-drill-btn" class="btn btn-primary" style="display: none;">🔄 Try Another Action</button>
+                    <button id="close-drill-footer-btn" class="btn btn-secondary">Close Drill</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Call Guard Modal -->
+        <div id="live-call-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="live-call-modal-title" hidden style="display: none;">
+            <div class="modal-content live-call-modal-content">
+                <div class="modal-header">
+                    <div class="modal-title-wrap">
+                        <span class="live-radar-pulse"></span>
+                        <h3 id="live-call-modal-title">📞 Live Call Guard — Speakerphone Monitor</h3>
+                        <span class="badge badge-live-radar">LIVE RADAR</span>
+                    </div>
+                    <button id="close-live-call-modal-btn" class="btn-close" aria-label="Close Live Call Guard">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="live-call-intro-banner">
+                        <p><strong>Speakerphone Defense:</strong> Put any suspicious call on speaker. AURALERT listens in rolling chunks, tracks cumulative risk, and interrupts with emergency spoken warnings (<em>"They just asked for an OTP, hang up now!"</em>).</p>
+                    </div>
+
+                    <!-- Preset Call Scenario Selector -->
+                    <div class="live-call-scenario-picker">
+                        <label for="live-call-scenario-select"><strong>Simulate Speakerphone Call:</strong></label>
+                        <div class="picker-row">
+                            <select id="live-call-scenario-select" class="select-dropdown">
+                                <option value="digital_arrest">🚨 CBI Digital Arrest & Contraband Parcel (5 chunks)</option>
+                                <option value="electricity_kyc">⚡ Electricity Blackout & QuickSupport APK (5 chunks)</option>
+                                <option value="bank_kyc_otp">🏦 SBI Account Suspension & OTP Trap (4 chunks)</option>
+                            </select>
+                            <button id="start-live-call-btn" class="btn btn-primary">▶️ Start Live Session</button>
+                        </div>
+                    </div>
+
+                    <!-- Live Risk Meter & Flashing Urgent Warning Banner -->
+                    <div id="live-call-dashboard" class="live-call-dashboard" style="display: none;">
+                        <div id="live-urgent-warning-banner" class="live-urgent-warning-banner" style="display: none;">
+                            <span class="warning-icon-pulse">🚨</span>
+                            <span id="live-urgent-warning-text" class="warning-text"></span>
+                        </div>
+
+                        <div class="live-risk-gauge-container">
+                            <div class="gauge-meta">
+                                <span class="gauge-title">Cumulative Threat Risk:</span>
+                                <span id="live-cumulative-score-text" class="gauge-score">0 / 100</span>
+                                <span id="live-verdict-badge" class="verdict-tag verdict-neutral">MONITORING</span>
+                            </div>
+                            <div class="live-gauge-bar-wrap">
+                                <div id="live-gauge-bar" class="live-gauge-bar" style="width: 0%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Detected Red Flags in Call -->
+                        <div class="live-flags-strip" id="live-flags-strip">
+                            <span class="flags-strip-label">Detected Tactics:</span>
+                            <div id="live-flags-list" class="live-flags-list">
+                                <span class="flag-pill flag-clean">Listening for tactics...</span>
+                            </div>
+                        </div>
+
+                        <!-- Dialogue Transcript Stream -->
+                        <div class="live-transcript-box">
+                            <div class="transcript-header">
+                                <span>🎙️ Live Dialogue Stream (Rolling Chunks):</span>
+                                <span id="live-chunk-counter" class="chunk-counter">Chunks: 0</span>
+                            </div>
+                            <div id="live-transcript-feed" class="live-transcript-feed">
+                                <!-- Chunks populated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Interactive Chunk Feeding Controls -->
+                        <div class="live-controls-row">
+                            <button id="next-chunk-btn" class="btn btn-secondary">⏭️ Feed Next Chunk</button>
+                            <button id="autoplay-call-btn" class="btn btn-primary">▶️ Auto-Play Dialogue</button>
+                            <button id="hang-up-action-btn" class="btn btn-danger">🛑 Hang Up & Open Case</button>
+                        </div>
+
+                        <!-- Custom Spoken Chunk Input -->
+                        <div class="custom-chunk-input-wrap">
+                            <input type="text" id="custom-chunk-text" class="text-input-sm" placeholder="Or type/speak live what the caller says right now...">
+                            <button id="send-custom-chunk-btn" class="btn btn-sm btn-secondary">Feed Audio</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="close-live-call-footer-btn" class="btn btn-secondary">Close Monitor</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Modal -->
+        <div id="report-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="report-modal-title" hidden style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="report-modal-title">Ready-to-File Cybercrime Incident Report</h3>
+                    <button id="close-modal-btn" class="btn-close" aria-label="Close report modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <pre id="report-content" class="report-pre"></pre>
+                </div>
+                <div class="modal-footer">
+                    <button id="copy-report-btn" class="btn btn-primary">📋 Copy Report to Clipboard</button>
+                    <button id="close-modal-footer-btn" class="btn btn-secondary">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js?v=8.0"></script>
+</body>
+</html>

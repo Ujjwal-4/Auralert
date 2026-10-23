@@ -1,0 +1,17 @@
+services:
+  scamshield:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: scamshield-server
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      - PORT=8000
+      - DB_PATH=/app/data/scamshield.db
+      - ALLOWED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000
+      - BEDROCK_MODEL_ID=anthropic.claude-3-haiku-20240307-v1:0
+      - AWS_REGION=us-east-1
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
