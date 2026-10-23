@@ -37,10 +37,25 @@ def main() -> int:
         return 0
     except (ClientError, BotoCoreError) as err:
         print(f"FAILED - {err}")
-        print(
-            "Fix: enable model access in the Bedrock console for this region, set a valid "
-            "BEDROCK_MODEL_ID (or inference profile ID), and check your AWS credentials."
-        )
+        err_str = str(err)
+        if "AccessDenied" in err_str:
+            print(
+                "\nNote on Model Access: Foundation models like Claude Haiku are paid and require manual access approval\n"
+                "in the AWS Bedrock Console. Don't worry if you don't have access—AURALERT automatically runs using its\n"
+                "built-in deterministic fallback engine without needing AWS credentials or paid model approvals!\n"
+                "See docs/FRICTION-LOG.md for full details."
+            )
+        elif "NoCredentials" in err_str:
+            print(
+                "\nNote on AWS Credentials: Configure AWS credentials via 'aws configure' with a scoped IAM developer user.\n"
+                "SECURITY WARNING: Never use AWS root account credentials for CLI development.\n"
+                "See docs/FRICTION-LOG.md for the recommended least-privilege Bedrock IAM policy."
+            )
+        else:
+            print(
+                "\nFix: enable model access in the Bedrock console for this region, set a valid "
+                "BEDROCK_MODEL_ID (or inference profile ID), and check your AWS credentials."
+            )
         return 1
 
 

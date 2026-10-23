@@ -54,10 +54,12 @@ Real Alexa+ device onboarding, live reputation feeds for links, regional-languag
 ### Built with
 Python, Model Context Protocol, Starlette, FastAPI, Uvicorn, SQLite, Docker, JavaScript, Web Speech API, Pytest
 
-### Product feedback (edit with your real experience)
-- **MCP Python SDK:** [what was clear, what was confusing, e.g. 2.x server API changes and Host/Origin validation errors].
-- **Amazon Bedrock:** [e.g. model access was gated and paid, so the Bedrock path is implemented but untested in the demo].
-- **Alexa+ / hackathon docs:** [what you wished existed, e.g. a local Alexa+ MCP test harness].
+### Product feedback (real developer experience)
+- **AWS CLI on Windows:** The Windows MSI installer does not update PATH in running terminal sessions, resulting in `aws: term not recognized`. Documenting a quick PATH refresh command saves developers significant setup friction.
+- **AWS IAM & Root Account Warnings:** First-time CLI authentication throws `NoCredentialsError`, easily tempting new developers to sign in with their root account. The Bedrock quickstart docs should prominently warn against root credentials and provide a 1-click least-privilege IAM policy allowing only `bedrock:InvokeModel`.
+- **Amazon Bedrock:** Claude Haiku 4.5 access is gated and paid; student hackathon accounts cannot call it without use-case approval and commercial billing. We solved this by engineering an offline deterministic heuristic fallback engine. Offering instant sandbox credits for hackathons would dramatically lower the onboarding barrier.
+- **MCP Python SDK:** Streamable HTTP transport and DNS-rebinding protection (`Host: testserver` returning HTTP 421) should be documented in test guides, alongside migration notes for MCP 2.x class refactoring (`MCPServer` vs `FastMCP`).
+- **Alexa+ / Hackathon Docs:** A local mock Alexa+ MCP client test harness would help developers test voice streaming before deploying.
 
 ### Judging criteria map
 | Criterion | Evidence in the repo |
