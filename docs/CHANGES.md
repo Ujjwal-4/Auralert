@@ -7,7 +7,7 @@
 **Correctness bugs**
 - `open_case` could crash with `sqlite3.IntegrityError` when a random speakable case ID collided with an existing one. It now retries.
 - `fallback.py` referenced an undefined `logger` inside an error path (would raise `NameError`). Fixed.
-- Tests wrote to the real `data/scamshield.db` and could fail intermittently. They now use an isolated temporary database.
+- Tests wrote to the real `data/auralert.db` and could fail intermittently. They now use an isolated temporary database.
 
 **Honesty fixes**
 - `notify_family` claimed "I have sent an emergency alert" and "blocked the funds transfer" although nothing is sent. It now says the alert is prepared and **not sent**, with status `simulated`.

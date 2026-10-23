@@ -1,7 +1,7 @@
 """OpenRouter AI client for simulated Alexa+ brain.
 
 Connects to OpenRouter.ai (supporting free models like Llama 3.3 70B, DeepSeek R1,
-Gemini 2.0 Flash) with automatic tool calling to ScamShield's 10 MCP tools.
+Gemini 2.0 Flash) with automatic tool calling to AURALERT's 10 MCP tools.
 Falls back smoothly to deterministic router on errors or rate limits.
 """
 
@@ -12,17 +12,17 @@ from typing import Any
 
 import httpx
 
-from scamshield.agent.fallback import CATEGORY_NAMES, handle_fallback_turn
-from scamshield.agent.mcp_client import mcp_client
-from scamshield.agent.schemas import AgentResponse, AgentUIState, ToolCallRecord
-from scamshield.agent.session import session_store
+from auralert.agent.fallback import CATEGORY_NAMES, handle_fallback_turn
+from auralert.agent.mcp_client import mcp_client
+from auralert.agent.schemas import AgentResponse, AgentUIState, ToolCallRecord
+from auralert.agent.session import session_store
 
-logger = logging.getLogger("scamshield.openrouter")
+logger = logging.getLogger("auralert.openrouter")
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_OPENROUTER_MODEL = "nvidia/nemotron-3.5-lightning:free"
 
-SYSTEM_PROMPT = """You are ScamShield, a defensive voice-first cybersecurity assistant for Alexa+ (clearly a simulated experience).
+SYSTEM_PROMPT = """You are AURALERT, a defensive voice-first cybersecurity assistant for Alexa+ (clearly a simulated experience).
 Your purpose is to protect families, elders, and citizens from cyber fraud, phishing links, and deceptive calls.
 Strict behavioral rules:
 1. Keep spoken answers concise, calm, and voice-first: maximum 2 sentences per turn.
@@ -85,7 +85,7 @@ async def run_openrouter_turn(
         "Authorization": f"Bearer {key}",
         "Content-Type": "application/json",
         "HTTP-Referer": "http://localhost:8000",
-        "X-Title": "ScamShield for Alexa+",
+        "X-Title": "AURALERT for Alexa+",
     }
 
     payload = {

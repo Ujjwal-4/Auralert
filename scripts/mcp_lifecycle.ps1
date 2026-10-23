@@ -5,7 +5,7 @@ param(
 
 $McpUrl = "$BaseUrl/mcp"
 Write-Host "==========================================================" -ForegroundColor Cyan
-Write-Host "ScamShield MCP Streamable HTTP Lifecycle Walkthrough" -ForegroundColor Cyan
+Write-Host "AURALERT MCP Streamable HTTP Lifecycle Walkthrough" -ForegroundColor Cyan
 Write-Host "Target: $McpUrl" -ForegroundColor Cyan
 Write-Host "==========================================================" -ForegroundColor Cyan
 

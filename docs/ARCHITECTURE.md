@@ -1,4 +1,4 @@
-# Architecture & Technical Deep-Dive: ScamShield for Alexa+
+# Architecture & Technical Deep-Dive: AURALERT for Alexa+
 
 > **Build, Ship, Shape: Amazon Developer Hackathon 2026**  
 > **Track:** Alexa+ (Self-Hosted Model Context Protocol Server & Agent Brain)  
@@ -8,7 +8,7 @@
 
 ## 1. Executive Architecture Overview
 
-ScamShield is a **voice-first defensive cybersecurity system** designed to protect consumers and vulnerable individuals from social engineering, phishing, and financial fraud. It acts as an intelligent intermediary between a voice assistant (Amazon Alexa+) and a suite of defensive cybersecurity tools exposed via the **Model Context Protocol (MCP)** specification (2025-11-25) over **Streamable HTTP**.
+AURALERT is a **voice-first defensive cybersecurity system** designed to protect consumers and vulnerable individuals from social engineering, phishing, and financial fraud. It acts as an intelligent intermediary between a voice assistant (Amazon Alexa+) and a suite of defensive cybersecurity tools exposed via the **Model Context Protocol (MCP)** specification (2025-11-25) over **Streamable HTTP**.
 
 ```mermaid
 flowchart TD
@@ -28,7 +28,7 @@ flowchart TD
         StreamableHTTP["Streamable HTTP Transport<br/>• Spec 2025-11-25<br/>• Origin / DNS-Rebinding Protection<br/>• mcp-session-id Lifecycle"]
     end
 
-    subgraph MCPLayer ["ScamShield MCPServer (src/scamshield/server.py)"]
+    subgraph MCPLayer ["AURALERT MCPServer (src/auralert/server.py)"]
         T1["1. analyze_message"]
         T2["2. check_link"]
         T3["3. open_case"]
@@ -38,7 +38,7 @@ flowchart TD
         T7["7. generate_report"]
     end
 
-    subgraph CoreLayer ["Deterministic Defensive Engines (src/scamshield/)"]
+    subgraph CoreLayer ["Deterministic Defensive Engines (src/auralert/)"]
         DetectionEngine["Detection Engine (Zero Network IO)<br/>• Levenshtein Typosquatting<br/>• Punycode & IP Host Detector<br/>• 10 Scam Category Regex Matchers<br/>• Hinglish & Benign Discrimination"]
         CaseService["Case Management (cases/service.py)<br/>• SQLite WAL Database<br/>• Speakable IDs ('shield-XXXX')<br/>• Entity Extractor & MD Generator"]
         RegionalDirectory["Regional Directory (regions.py)<br/>• India: 1930 / cybercrime.gov.in<br/>• US: FTC / IC3<br/>• UK: Report Fraud"]
@@ -63,7 +63,7 @@ flowchart TD
 ## 2. MCP Protocol Implementation (Streamable HTTP)
 
 ### 2.1 Spec Adherence (2025-11-25)
-ScamShield implements the official Model Context Protocol using the Python MCP SDK (`mcp>=2.3.0`). In accordance with the latest protocol updates:
+AURALERT implements the official Model Context Protocol using the Python MCP SDK (`mcp>=2.3.0`). In accordance with the latest protocol updates:
 - **Transport:** Streamable HTTP at endpoint `/mcp` mounted into a Starlette / FastAPI ASGI application.
 - **Methods:**
   - `POST /mcp`: Handles bidirectional JSON-RPC 2.0 client requests (`tools/list`, `tools/call`, `initialize`, `notifications/initialized`).
@@ -101,7 +101,7 @@ All 7 tools strictly enforce defensive cybersecurity boundaries. Every tool retu
 ## 4. Deterministic Rule-Based Detection Engine
 
 ### 4.1 Strict Zero-Network I/O Guarantee (No URL fetching)
-Most commercial security scanners suffer from Server-Side Request Forgery (SSRF) and malware detonation vulnerabilities when visiting attacker-controlled URLs. ScamShield's detection engine runs **100% locally and offline**. It never makes network calls or DNS lookups on input URLs:
+Most commercial security scanners suffer from Server-Side Request Forgery (SSRF) and malware detonation vulnerabilities when visiting attacker-controlled URLs. AURALERT's detection engine runs **100% locally and offline**. It never makes network calls or DNS lookups on input URLs:
 - Verified by automated unit tests monkey-patching `socket.socket` to throw a hard error if any socket connection is attempted during detection.
 
 ### 4.2 Link Analysis Pipeline (`link_checker.py`)
@@ -151,7 +151,7 @@ When AWS credentials (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`) are present,
 - Bedrock autonomously orchestrates tool calls, parses results, and synthesizes empathetic, voice-first responses.
 
 ### 6.2 Deterministic Rule-Based Fallback Router
-Hackathon demos and production systems often fail when external cloud LLM APIs experience rate limits, latency spikes, or credential issues. ScamShield solves this with an **automatic zero-downtime fallback router**:
+Hackathon demos and production systems often fail when external cloud LLM APIs experience rate limits, latency spikes, or credential issues. AURALERT solves this with an **automatic zero-downtime fallback router**:
 - If Bedrock fails, is disabled, or times out, the request is instantly routed to `handle_fallback_turn()`.
 - Fallback router uses heuristic intent detection (URL presence, payment loss keywords, emergency triggers) to invoke MCP tools deterministically.
 - Needs no cloud credentials or network, so the demo keeps working if Bedrock or OpenRouter are unavailable. The `brain` field of every response says which provider answered.
@@ -167,7 +167,7 @@ sequenceDiagram
     autonumber
     actor Victim as 👤 Panicked User
     participant Alexa as 🎙️ Alexa+ Brain
-    participant MCP as 🛡️ ScamShield MCP Server
+    participant MCP as 🛡️ AURALERT MCP Server
     participant Detection as ⚙️ Detection Engine
     participant DB as 🗄️ SQLite Database
     participant Region as 📍 Regional Directory

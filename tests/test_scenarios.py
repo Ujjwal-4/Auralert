@@ -3,8 +3,8 @@
 import pytest
 from starlette.testclient import TestClient
 
-from scamshield.app import create_app
-from scamshield.cases import delete_case
+from auralert.app import create_app
+from auralert.cases import delete_case
 
 
 @pytest.fixture

@@ -11,7 +11,7 @@ def main():
     mcp_url = f"{base_url}/mcp"
 
     print("=" * 60)
-    print("ScamShield MCP Streamable HTTP Lifecycle Walkthrough")
+    print("AURALERT MCP Streamable HTTP Lifecycle Walkthrough")
     print(f"Target: {mcp_url}")
     print("=" * 60)
 
@@ -66,7 +66,7 @@ def main():
         print(f"Status: {res_notif.status_code}")
 
         # 3. tools/list
-        print("\n[3/5] Step 3: tools/list (retrieving all 7 ScamShield tools)...")
+        print("\n[3/5] Step 3: tools/list (retrieving all 7 AURALERT tools)...")
         list_payload = {
             "jsonrpc": "2.0",
             "id": "list-1",

@@ -3,8 +3,8 @@
 import pytest
 from starlette.testclient import TestClient
 
-from scamshield.app import create_app
-from scamshield.cases import (
+from auralert.app import create_app
+from auralert.cases import (
     add_evidence_service,
     check_repeat_offender_service,
     delete_case,
@@ -12,7 +12,7 @@ from scamshield.cases import (
     find_repeat_offenders,
     open_case_service,
 )
-from scamshield.server import check_repeat_offender, export_indicators
+from auralert.server import check_repeat_offender, export_indicators
 
 
 @pytest.fixture

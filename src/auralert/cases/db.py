@@ -1,4 +1,4 @@
-"""SQLite database management for ScamShield case files, evidence, and events.
+"""SQLite database management for AURALERT case files, evidence, and events.
 
 Implements migrations, WAL mode for concurrent access, foreign-key cascading,
 and thread-safe connection pooling.
@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-DEFAULT_DB_PATH = "./data/scamshield.db"
+DEFAULT_DB_PATH = "./data/auralert.db"
 
 PHONETIC_WORDS = [
     "shield",
@@ -752,7 +752,7 @@ def export_all_threat_indicators() -> dict[str, Any]:
     indicators_list.sort(key=lambda x: (x["occurrence_count"], x["max_risk_score"]), reverse=True)
 
     return {
-        "feed_name": "ScamShield Cyber Threat Intelligence Feed",
+        "feed_name": "AURALERT Cyber Threat Intelligence Feed",
         "feed_version": "1.0",
         "format": "STIX-compatible CTI Indicators",
         "generated_at": datetime.now(UTC).isoformat(),

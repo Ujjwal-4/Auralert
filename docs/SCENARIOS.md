@@ -1,4 +1,4 @@
-# ScamShield Demo Scenarios
+# AURALERT Demo Scenarios
 
 These 6 scripted scenarios represent real-world fraud patterns, edge cases, and multi-region support for live judging and video recording.
 
@@ -60,7 +60,7 @@ These 6 scripted scenarios represent real-world fraud patterns, edge cases, and 
 
 ## Scenario D: Legitimate Bank OTP Notification (Low False Positive Demo)
 
-- **Context:** Shows that ScamShield does not cry wolf on benign transactional bank notifications that contain security warnings.
+- **Context:** Shows that AURALERT does not cry wolf on benign transactional bank notifications that contain security warnings.
 - **Exact User Line:**
   > *"OTP for your transaction at Amazon India for Rs. 1,499 is 482910. Do NOT share this OTP with anyone. SBI never asks for OTP."*
 - **Expected Tool Calls:**

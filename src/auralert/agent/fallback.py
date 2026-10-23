@@ -8,12 +8,12 @@ Maps user intents directly to MCP tool calls and formats calm voice responses.
 import logging
 import re
 
-from scamshield.agent.mcp_client import mcp_client
-from scamshield.agent.schemas import AgentResponse, AgentUIState, ToolCallRecord
-from scamshield.agent.session import session_store
-from scamshield.detection.hindi_support import get_hindi_guidance, is_hindi_or_hinglish
+from auralert.agent.mcp_client import mcp_client
+from auralert.agent.schemas import AgentResponse, AgentUIState, ToolCallRecord
+from auralert.agent.session import session_store
+from auralert.detection.hindi_support import get_hindi_guidance, is_hindi_or_hinglish
 
-logger = logging.getLogger("scamshield.fallback")
+logger = logging.getLogger("auralert.fallback")
 
 # Natural-language intent patterns (supplement the exact phrase lists below)
 _SET_SAFE_RE = re.compile(
@@ -488,7 +488,7 @@ async def handle_fallback_turn(
         )
         return AgentResponse(
             reply=export_res.get(
-                "speak", "Exported threat indicators from ScamShield intelligence database."
+                "speak", "Exported threat indicators from AURALERT intelligence database."
             ),
             tool_calls=tool_calls,
             case_id=case_id,

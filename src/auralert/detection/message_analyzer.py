@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from scamshield.detection.link_checker import check_link
+from auralert.detection.link_checker import check_link
 
 # Stable Red Flag Definitions with weights and plain explanations
 RED_FLAG_DEFINITIONS = {

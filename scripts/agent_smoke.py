@@ -35,7 +35,7 @@ def main() -> None:
     session_id = "smoke-session-1234"
 
     print("=" * 65)
-    print("ScamShield Agent Brain Smoke Test (5 Canned Turns)")
+    print("AURALERT Agent Brain Smoke Test (5 Canned Turns)")
     print(f"Target: {agent_url}")
     print("=" * 65)
 
@@ -56,7 +56,7 @@ def main() -> None:
         print("[Mode: In-Process Starlette TestClient (Server not running on port)]")
         from starlette.testclient import TestClient
 
-        from scamshield.app import app
+        from auralert.app import app
 
         client_ctx = TestClient(app, base_url=base_url)
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-platform production smoke test for ScamShield."""
+"""Cross-platform production smoke test for AURALERT."""
 
 import sys
 
@@ -11,7 +11,7 @@ def main() -> None:
     mcp_url = f"{base_url}/mcp"
 
     print("=" * 60)
-    print("ScamShield Production Smoke Test")
+    print("AURALERT Production Smoke Test")
     print(f"Target: {base_url}")
     print("=" * 60)
 
@@ -34,7 +34,7 @@ def main() -> None:
         print("[Mode: In-Process Starlette TestClient (Server not running on port)]")
         from starlette.testclient import TestClient
 
-        from scamshield.app import app
+        from auralert.app import app
 
         client_ctx = TestClient(app, base_url=base_url)
         target_mcp = "/mcp"
@@ -79,7 +79,7 @@ def main() -> None:
         }
 
         # 3. Tools list
-        print("\n[3/4] Checking tools/list for ScamShield tools...")
+        print("\n[3/4] Checking tools/list for AURALERT tools...")
         list_payload = {
             "jsonrpc": "2.0",
             "id": "smoke-list",

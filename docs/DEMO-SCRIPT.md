@@ -1,4 +1,4 @@
-# Demo Video Script: ScamShield for Alexa+
+# Demo Video Script: AURALERT for Alexa+
 
 > **Build, Ship, Shape: Amazon Developer Hackathon 2026**  
 > **Track:** Alexa+ (Self-Hosted Model Context Protocol Server & Agent Brain)  
@@ -13,7 +13,7 @@ Before pressing record, make sure your environment matches this checklist:
 - [ ] **Display Resolution:** Set your screen resolution to **1920x1080 (1080p)**.
 - [ ] **Browser Window:** Chrome or Edge open at full-screen on `http://127.0.0.1:8000/`. Close all extraneous tabs, bookmarks bar, and notification popups.
 - [ ] **Audio Setup:** External USB microphone configured. Ensure room is quiet and audio levels peak between -6dB and -3dB.
-- [ ] **Backend Running:** Verify the ScamShield backend is running in terminal:
+- [ ] **Backend Running:** Verify the AURALERT backend is running in terminal:
   ```bash
   python scripts/run.py
   ```
@@ -33,8 +33,8 @@ Safe Buffer: 30 seconds below 03:00 limit
 
 | Time | On-Screen Action | Narration (Voice-Over) |
 |---|---|---|
-| **0:00 - 0:10** | Title card: **ScamShield for Alexa+**.<br/>Show brief news headlines of "Digital Arrest" and cyber fraud losses. | *"Over one trillion dollars is lost to cybercrime every year. In India and across the world, criminal syndicates exploit panic with 'digital arrest' video calls and fake KYC threats—targeting elderly and vulnerable families."* |
-| **0:10 - 0:25** | Cut to the **ScamShield Web Console** (`http://127.0.0.1:8000/`). Show the clean voice interface and glowing Alexa orb. | *"When a threatening call or text arrives, victims don't know who to call or how to inspect malicious links. What if your smart speaker could act as an instant, calm cybersecurity guardian? This is ScamShield for Alexa+."* |
+| **0:00 - 0:10** | Title card: **AURALERT for Alexa+**.<br/>Show brief news headlines of "Digital Arrest" and cyber fraud losses. | *"Over one trillion dollars is lost to cybercrime every year. In India and across the world, criminal syndicates exploit panic with 'digital arrest' video calls and fake KYC threats—targeting elderly and vulnerable families."* |
+| **0:10 - 0:25** | Cut to the **AURALERT Web Console** (`http://127.0.0.1:8000/`). Show the clean voice interface and glowing Alexa orb. | *"When a threatening call or text arrives, victims don't know who to call or how to inspect malicious links. What if your smart speaker could act as an instant, calm cybersecurity guardian? This is AURALERT for Alexa+."* |
 
 ---
 
@@ -42,8 +42,8 @@ Safe Buffer: 30 seconds below 03:00 limit
 
 | Time | On-Screen Action | Narration (Voice-Over) |
 |---|---|---|
-| **0:25 - 0:38** | Cut to Mermaid Architecture diagram (or highlight the top status bar showing *MCP Server Connected*). | *"ScamShield connects Alexa+ to a self-hosted Model Context Protocol server over Streamable HTTP, adhering to the latest 2025-11-25 MCP specification. It exposes seven defensive cybersecurity tools."* |
-| **0:38 - 0:50** | Show Bedrock integration and 100% offline detection engine badges. | *"Powered by Amazon Bedrock's Converse API with a deterministic zero-downtime fallback router, ScamShield analyzes messages and phishing links with zero outbound network calls—eliminating SSRF and malware risks."* |
+| **0:25 - 0:38** | Cut to Mermaid Architecture diagram (or highlight the top status bar showing *MCP Server Connected*). | *"AURALERT connects Alexa+ to a self-hosted Model Context Protocol server over Streamable HTTP, adhering to the latest 2025-11-25 MCP specification. It exposes seven defensive cybersecurity tools."* |
+| **0:38 - 0:50** | Show Bedrock integration and 100% offline detection engine badges. | *"Powered by Amazon Bedrock's Converse API with a deterministic zero-downtime fallback router, AURALERT analyzes messages and phishing links with zero outbound network calls—eliminating SSRF and malware risks."* |
 
 ---
 
@@ -62,8 +62,8 @@ Safe Buffer: 30 seconds below 03:00 limit
 | Time | On-Screen Action | Narration (Voice-Over) |
 |---|---|---|
 | **1:25 - 1:35** | Say into mic (or click `"💸 Lost Money via UPI"`):<br/>*"I got panicked and sent 15,000 Rupees via UPI to fraudster@okaxis. What should I do now?"* | *(Presenter speaking into mic)*: *"I got panicked and sent 15,000 Rupees via UPI to fraudster@okaxis. What should I do now?"* |
-| **1:35 - 1:48** | Risk gauge shows **95 (Emergency)**. Alexa responds:<br/>*"Because money was involved, contact your bank and helpline 1930 immediately."*<br/>Steps checklist displays Step 1: Call 1930, Step 2: Bank dispute. | *"When money has been sent, every second counts. ScamShield triggers immediate 'Golden Hour' guidance, providing the exact official 1930 cybercrime helpline and dispute steps for UPI."* |
-| **1:48 - 2:00** | Click **"View Case Report"** button. The modal opens showing the Markdown report with timestamped evidence. | *"With one click, ScamShield generates an official Markdown incident report, formatted with extracted transaction IDs, ready to copy and paste into cybercrime.gov.in."* |
+| **1:35 - 1:48** | Risk gauge shows **95 (Emergency)**. Alexa responds:<br/>*"Because money was involved, contact your bank and helpline 1930 immediately."*<br/>Steps checklist displays Step 1: Call 1930, Step 2: Bank dispute. | *"When money has been sent, every second counts. AURALERT triggers immediate 'Golden Hour' guidance, providing the exact official 1930 cybercrime helpline and dispute steps for UPI."* |
+| **1:48 - 2:00** | Click **"View Case Report"** button. The modal opens showing the Markdown report with timestamped evidence. | *"With one click, AURALERT generates an official Markdown incident report, formatted with extracted transaction IDs, ready to copy and paste into cybercrime.gov.in."* |
 
 ---
 
@@ -71,8 +71,8 @@ Safe Buffer: 30 seconds below 03:00 limit
 
 | Time | On-Screen Action | Narration (Voice-Over) |
 |---|---|---|
-| **2:00 - 2:10** | Click the **Region selector** in the header and switch from `IN` to `US`. Type or speak a tax gift card scam message. | *"ScamShield scales globally. Switching to the US immediately reconfigures emergency guidance to the FTC helpline at 1-877-382-4357 and the FBI IC3 portal."* |
-| **2:10 - 2:18** | Briefly show terminal with `pytest tests -v` passing all 35 tests including zero-network monkeypatching. | *"With 35 automated tests, 100% precision and recall on our benchmark, and complete prompt-injection immunity, ScamShield is enterprise-hardened."* |
+| **2:00 - 2:10** | Click the **Region selector** in the header and switch from `IN` to `US`. Type or speak a tax gift card scam message. | *"AURALERT scales globally. Switching to the US immediately reconfigures emergency guidance to the FTC helpline at 1-877-382-4357 and the FBI IC3 portal."* |
+| **2:10 - 2:18** | Briefly show terminal with `pytest tests -v` passing all 35 tests including zero-network monkeypatching. | *"With 35 automated tests, 100% precision and recall on our benchmark, and complete prompt-injection immunity, AURALERT is enterprise-hardened."* |
 
 ---
 
@@ -80,7 +80,7 @@ Safe Buffer: 30 seconds below 03:00 limit
 
 | Time | On-Screen Action | Narration (Voice-Over) |
 |---|---|---|
-| **2:18 - 2:30** | Cut to closing slide showing:<br/>• **ScamShield for Alexa+**<br/>• Amazon Developer Hackathon 2026<br/>• AWS Builder (Amazon Bedrock) & Open Source (MIT)<br/>• GitHub Repository URL | *"ScamShield empowers Alexa+ to transform from a passive voice assistant into an active cybersecurity guardian. Thank you for watching!"* |
+| **2:18 - 2:30** | Cut to closing slide showing:<br/>• **AURALERT for Alexa+**<br/>• Amazon Developer Hackathon 2026<br/>• AWS Builder (Amazon Bedrock) & Open Source (MIT)<br/>• GitHub Repository URL | *"AURALERT empowers Alexa+ to transform from a passive voice assistant into an active cybersecurity guardian. Thank you for watching!"* |
 
 ---
 

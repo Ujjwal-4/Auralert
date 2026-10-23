@@ -1,4 +1,4 @@
-"""Hindi Voice Mode support and bilingual scam defense intelligence for ScamShield.
+"""Hindi Voice Mode support and bilingual scam defense intelligence for AURALERT.
 
 Provides Devanagari detection, native Hindi speech guidance, authentic voice warnings,
 and Hindi UI state labels to empower citizens across India.

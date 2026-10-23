@@ -7,9 +7,9 @@ from pathlib import Path
 import pytest
 from starlette.testclient import TestClient
 
-from scamshield.agent.brain import build_bedrock_history
-from scamshield.app import create_app
-from scamshield.detection.message_analyzer import URL_REGEX, analyze_message
+from auralert.agent.brain import build_bedrock_history
+from auralert.app import create_app
+from auralert.detection.message_analyzer import URL_REGEX, analyze_message
 
 DATA = Path(__file__).parent / "data"
 
@@ -123,7 +123,7 @@ def test_status_endpoint_reports_brains_without_secrets(monkeypatch):
 
 def test_case_id_collision_is_retried(monkeypatch):
     """Opening a case must not crash when a random speakable ID is already taken."""
-    from scamshield.cases import db
+    from auralert.cases import db
 
     db.init_db()
     first = db.create_case(title="first")
@@ -136,7 +136,7 @@ def test_case_id_collision_is_retried(monkeypatch):
 def test_explicit_duplicate_case_id_still_errors():
     import sqlite3
 
-    from scamshield.cases import db
+    from auralert.cases import db
 
     db.init_db()
     db.create_case(title="dup", case_id="fixed-001")

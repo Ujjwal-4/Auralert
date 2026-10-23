@@ -1,4 +1,4 @@
-"""ScamShield MCP Server definition (Streamable HTTP, MCP spec 2025-11-25).
+"""AURALERT MCP Server definition (Streamable HTTP, MCP spec 2025-11-25).
 
 Exposes 10 defensive cybersecurity tools for analyzing suspicious messages,
 evaluating links statically, tracking incident case files, recommending next steps,
@@ -10,7 +10,7 @@ from typing import Any, Literal
 
 from mcp.server.mcpserver import MCPServer
 
-from scamshield.cases import (
+from auralert.cases import (
     add_evidence_service,
     check_repeat_offender_service,
     export_threat_intel_service,
@@ -21,22 +21,22 @@ from scamshield.cases import (
     set_safe_word_service,
     verify_safe_word_service,
 )
-from scamshield.cases.report_ai import generate_dynamic_report
-from scamshield.detection import analyze_message as run_analyze_message
-from scamshield.detection import call_guard_registry
-from scamshield.detection import check_link as run_check_link
-from scamshield.drill import score_drill_response as run_score_drill_response
-from scamshield.drill import start_drill as run_start_drill
+from auralert.cases.report_ai import generate_dynamic_report
+from auralert.detection import analyze_message as run_analyze_message
+from auralert.detection import call_guard_registry
+from auralert.detection import check_link as run_check_link
+from auralert.drill import score_drill_response as run_score_drill_response
+from auralert.drill import start_drill as run_start_drill
 
 # Provide FastMCP alias for compatibility with MCP documentation
 FastMCP = MCPServer
 
 # Initialize MCPServer
 mcp_server = MCPServer(
-    name="ScamShield",
+    name="AURALERT",
     version="0.1.0",
     instructions=(
-        "ScamShield is an expert defensive cybersecurity assistant. "
+        "AURALERT is an expert defensive cybersecurity assistant. "
         "It analyzes suspicious communications, inspects links statically without fetching, "
         "tracks case evidence, prioritizes emergency remedial actions, and drafts official reports."
     ),
@@ -370,7 +370,7 @@ def guard_call_chunk(
     name="end_call_guard",
     description=(
         "Conclude an active Live Call Guard session and optionally synthesize all logged chunks "
-        "into a permanent ScamShield case file with emergency remedial steps."
+        "into a permanent AURALERT case file with emergency remedial steps."
     ),
 )
 def end_call_guard(
@@ -461,14 +461,14 @@ def verify_safe_word(
     name="check_repeat_offender",
     description=(
         "Cross-reference a phone number, UPI ID, or domain against past incidents stored in "
-        "ScamShield memory to detect serial offenders across multiple cases."
+        "AURALERT memory to detect serial offenders across multiple cases."
     ),
 )
 def check_repeat_offender(
     indicator: str,
     indicator_type: Literal["phone", "upi_id", "domain", "auto"] = "auto",
 ) -> dict[str, Any]:
-    """Look up an indicator in ScamShield cross-case intelligence memory.
+    """Look up an indicator in AURALERT cross-case intelligence memory.
 
     Args:
         indicator: Phone number, UPI ID, or domain to search.
@@ -487,7 +487,7 @@ def check_repeat_offender(
     name="export_indicators",
     description=(
         "Export all accumulated threat indicators (phones, UPI IDs, malicious domains) "
-        "from ScamShield case memory as standardized Cyber Threat Intelligence (CTI) JSON."
+        "from AURALERT case memory as standardized Cyber Threat Intelligence (CTI) JSON."
     ),
 )
 def export_indicators(

@@ -2,9 +2,9 @@
 
 import pytest
 
-from scamshield.agent.fallback import handle_fallback_turn
-from scamshield.cases import delete_case
-from scamshield.detection.call_guard import LiveCallSession
+from auralert.agent.fallback import handle_fallback_turn
+from auralert.cases import delete_case
+from auralert.detection.call_guard import LiveCallSession
 
 
 def _run(chunks):

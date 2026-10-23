@@ -8,7 +8,7 @@ BASE_URL="${1:-http://127.0.0.1:8000}"
 MCP_URL="${BASE_URL}/mcp"
 
 echo "=========================================================="
-echo "ScamShield MCP Streamable HTTP Lifecycle Walkthrough"
+echo "AURALERT MCP Streamable HTTP Lifecycle Walkthrough"
 echo "Target: ${MCP_URL}"
 echo "=========================================================="
 
@@ -66,7 +66,7 @@ curl -s -i \
 echo ""
 
 # 3. Tools List
-echo -e "\n[3/5] Step 3: tools/list (retrieving all 7 ScamShield tools)..."
+echo -e "\n[3/5] Step 3: tools/list (retrieving all 7 AURALERT tools)..."
 curl -s \
   -X POST "${MCP_URL}" \
   -H "Content-Type: application/json" \

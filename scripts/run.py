@@ -41,7 +41,7 @@ def main():
                 sys.executable,
                 "-m",
                 "uvicorn",
-                "scamshield.app:app",
+                "auralert.app:app",
                 "--host",
                 host,
                 "--port",

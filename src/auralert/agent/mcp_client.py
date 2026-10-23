@@ -12,13 +12,13 @@ from typing import Any
 
 import httpx
 
-from scamshield.server import mcp_server
+from auralert.server import mcp_server
 
-logger = logging.getLogger("scamshield.mcp_client")
+logger = logging.getLogger("auralert.mcp_client")
 
 
 class MCPHttpClient:
-    """Invokes ScamShield MCP tools over loopback HTTP."""
+    """Invokes AURALERT MCP tools over loopback HTTP."""
 
     def __init__(self, base_url: str | None = None) -> None:
         port = os.getenv("PORT", "8000")

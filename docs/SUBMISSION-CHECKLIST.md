@@ -1,4 +1,4 @@
-# Submission Checklist: ScamShield for Alexa+
+# Submission Checklist: AURALERT for Alexa+
 
 Deadline: **23 Oct 2026, 12:00 PM PT** (about 12:30 AM IST on 24 Oct). Aim to submit by 6 PM IST on 23 Oct. Confirm the time on the Devpost page.
 
@@ -6,7 +6,7 @@ Tick a box only after you have actually done and checked it. Nothing below is pr
 
 ## 1. Code and tests
 - [ ] `pytest` passes locally (expected: 81 passed) and `ruff check .` is clean
-- [ ] `data/scamshield.db` and `.env` are not in the repo (`git ls-files | grep -E "\.env$|\.db$"` prints nothing)
+- [ ] `data/auralert.db` and `.env` are not in the repo (`git ls-files | grep -E "\.env$|\.db$"` prints nothing)
 - [ ] No API keys anywhere in git history (`git log -p | grep -i "sk-or-\|AKIA"` prints nothing)
 - [ ] OpenRouter key rotated if it was ever shared outside your machine
 

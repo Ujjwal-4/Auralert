@@ -1,11 +1,11 @@
-"""Tests for ScamShield detection engine (message analysis & static link checking)."""
+"""Tests for AURALERT detection engine (message analysis & static link checking)."""
 
 import json
 import socket
 from pathlib import Path
 
-from scamshield.detection.link_checker import check_link
-from scamshield.detection.message_analyzer import analyze_message
+from auralert.detection.link_checker import check_link
+from auralert.detection.message_analyzer import analyze_message
 
 
 def test_no_network_io_in_detection(monkeypatch):
@@ -136,7 +136,7 @@ def test_labeled_dataset_precision_recall():
     f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
 
     print("\n" + "=" * 50)
-    print("ScamShield Benchmark Confusion Matrix:")
+    print("AURALERT Benchmark Confusion Matrix:")
     print(f"Total test cases: {total}")
     print(f"  True Positives (Scams detected):   {tp}")
     print(f"  True Negatives (Benign passed):    {tn}")

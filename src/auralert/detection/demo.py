@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
-"""CLI demonstration tool for ScamShield detection engine."""
+"""CLI demonstration tool for AURALERT detection engine."""
 
 import sys
 
-from scamshield.detection.message_analyzer import analyze_message
+from auralert.detection.message_analyzer import analyze_message
 
 
 def main() -> None:
     if len(sys.argv) < 2:
-        print('Usage: python -m scamshield.detection.demo "<suspicious message or link>"')
+        print('Usage: python -m auralert.detection.demo "<suspicious message or link>"')
         sys.exit(1)
 
     input_text = sys.argv[1]
     result = analyze_message(input_text)
 
     print("=" * 60)
-    print("ScamShield Detection Analysis Result")
+    print("AURALERT Detection Analysis Result")
     print("=" * 60)
     print(f"Input: {input_text}")
     print(f"Verdict: {result['verdict'].upper()}")

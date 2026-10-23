@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Production Smoke Verification Script for ScamShield
+# Production Smoke Verification Script for AURALERT
 # Usage: ./scripts/smoke_prod.sh [https://your-deployed-app.onrender.com]
 
 set -euo pipefail
@@ -8,7 +8,7 @@ BASE_URL="${1:-http://127.0.0.1:8000}"
 MCP_URL="${BASE_URL}/mcp"
 
 echo "=========================================================="
-echo "ScamShield Production Smoke Test"
+echo "AURALERT Production Smoke Test"
 echo "Target Base URL: ${BASE_URL}"
 echo "=========================================================="
 
@@ -53,7 +53,7 @@ fi
 echo "PASS: Session established with ID: ${SESSION_ID}"
 
 # 3. Verify Tools List
-echo -e "\n[3/4] Checking tools/list for ScamShield tools..."
+echo -e "\n[3/4] Checking tools/list for AURALERT tools..."
 TOOLS_RESP=$(curl -s -X POST "${MCP_URL}" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json, text/event-stream" \

@@ -1,6 +1,6 @@
 """Case file management and incident reporting package."""
 
-from scamshield.cases.db import (
+from auralert.cases.db import (
     check_safe_word,
     create_case,
     delete_case,
@@ -13,7 +13,7 @@ from scamshield.cases.db import (
     list_safe_words,
     save_safe_word,
 )
-from scamshield.cases.service import (
+from auralert.cases.service import (
     add_evidence_service,
     check_repeat_offender_service,
     export_threat_intel_service,

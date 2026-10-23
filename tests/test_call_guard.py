@@ -3,13 +3,13 @@
 import pytest
 from starlette.testclient import TestClient
 
-from scamshield.app import create_app
-from scamshield.cases import delete_case, fetch_case
-from scamshield.detection.call_guard import (
+from auralert.app import create_app
+from auralert.cases import delete_case, fetch_case
+from auralert.detection.call_guard import (
     LiveCallSession,
     call_guard_registry,
 )
-from scamshield.server import end_call_guard, guard_call_chunk, start_call_guard
+from auralert.server import end_call_guard, guard_call_chunk, start_call_guard
 
 
 @pytest.fixture

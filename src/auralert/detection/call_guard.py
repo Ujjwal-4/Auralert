@@ -1,4 +1,4 @@
-"""Live Call Guard engine for ScamShield.
+"""Live Call Guard engine for AURALERT.
 
 Listens to suspicious speakerphone calls in rolling chunks, tracks cumulative risk
 across the dialogue, escalates red flags, and interrupts with urgent voice warnings
@@ -10,7 +10,7 @@ import secrets
 from datetime import UTC, datetime
 from typing import Any
 
-from scamshield.cases.db import create_case, insert_evidence
+from auralert.cases.db import create_case, insert_evidence
 
 # Warnings such as "never share your OTP" are protective, not a solicitation
 NEGATION_CONTEXT = re.compile(
@@ -375,7 +375,7 @@ class LiveCallSession:
             if self.language in ("hi", "hindi"):
                 speak = "कॉल की निगरानी जारी है। अभी तक कोई संदिग्ध संकेत नहीं मिला।"
             else:
-                speak = "ScamShield is monitoring your speaker call. No critical red flags detected yet."
+                speak = "AURALERT is monitoring your speaker call. No critical red flags detected yet."
 
         chunk_record = {
             "chunk_index": len(self.chunks) + 1,
@@ -403,7 +403,7 @@ class LiveCallSession:
         }
 
     def summarize_to_case(self) -> dict[str, Any]:
-        """Convert live call transcript into a formal ScamShield case file."""
+        """Convert live call transcript into a formal AURALERT case file."""
         title = f"Live Call Interception: {self.primary_category.replace('_', ' ').title()}"
         case_rec = create_case(title=title, region=self.region)
         cid = case_rec["id"]

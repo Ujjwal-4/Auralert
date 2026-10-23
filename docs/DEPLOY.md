@@ -1,6 +1,6 @@
-# ScamShield Deployment Guide
+# AURALERT Deployment Guide
 
-ScamShield provides a production-ready, containerized backend serving the MCP Streamable HTTP endpoint (`/mcp`), health monitoring (`/healthz`), simulated Alexa+ brain (`/api/agent`), and simulator web UI (`/web`).
+AURALERT provides a production-ready, containerized backend serving the MCP Streamable HTTP endpoint (`/mcp`), health monitoring (`/healthz`), simulated Alexa+ brain (`/api/agent`), and simulator web UI (`/web`).
 
 ---
 
@@ -33,23 +33,23 @@ Render offers free web service hosting with automatic HTTPS and Docker support.
 ### Step-by-Step Setup:
 1. **Push your repo to GitHub** (public or private).
 2. Log in to [dashboard.render.com](https://dashboard.render.com) and click **New + > Web Service**.
-3. Connect your GitHub repository `ScamShield`.
+3. Connect your GitHub repository `AURALERT`.
 4. Configure service settings:
-   - **Name:** `scamshield`
+   - **Name:** `auralert`
    - **Region:** Ohio (US East) or Frankfurt (EU)
    - **Environment:** `Docker` (or `Python 3`)
    - **Branch:** `main` (or `master`)
    - **Plan:** `Free`
 5. If using Native Python instead of Docker:
    - **Build Command:** `pip install .`
-   - **Start Command:** `uvicorn scamshield.app:app --host 0.0.0.0 --port $PORT`
+   - **Start Command:** `uvicorn auralert.app:app --host 0.0.0.0 --port $PORT`
 6. Add **Environment Variables**:
    | Variable | Value | Purpose |
    | :--- | :--- | :--- |
    | `PORT` | `8000` (or leave default assigned by Render) | Server listening port |
    | `ALLOWED_ORIGINS` | `https://your-service.onrender.com,http://localhost:8000` | DNS rebinding protection on `/mcp` |
    | `ALLOWED_HOSTS` | `127.0.0.1,localhost,your-service.onrender.com` | MCP transport host header verification |
-   | `DB_PATH` | `/app/data/scamshield.db` (or `./data/scamshield.db`) | SQLite file path |
+   | `DB_PATH` | `/app/data/auralert.db` (or `./data/auralert.db`) | SQLite file path |
    | `BEDROCK_MODEL_ID` | `anthropic.claude-3-haiku-20240307-v1:0` | Bedrock model ID |
    | `AWS_REGION` | `us-east-1` | AWS region |
    | `AWS_ACCESS_KEY_ID` | *(Optional, your AWS key)* | For live Bedrock Converse API |
@@ -69,13 +69,13 @@ Render offers free web service hosting with automatic HTTPS and Docker support.
 curl -L https://fly.io/install.sh | sh
 
 # Launch app configuration
-fly launch --name scamshield --no-deploy
+fly launch --name auralert --no-deploy
 
 # Add persistent volume for SQLite
-fly volumes create scamshield_data --size 1
+fly volumes create auralert_data --size 1
 
 # Set secrets
-fly secrets set ALLOWED_ORIGINS="https://scamshield.fly.dev"
+fly secrets set ALLOWED_ORIGINS="https://auralert.fly.dev"
 
 # Deploy
 fly deploy
@@ -84,7 +84,7 @@ fly deploy
 ### Railway
 1. Click **New Project > Deploy from GitHub repo**.
 2. Railway detects the `Dockerfile` automatically.
-3. In service variables, set `PORT=8000` and `ALLOWED_ORIGINS=https://scamshield.up.railway.app`.
+3. In service variables, set `PORT=8000` and `ALLOWED_ORIGINS=https://auralert.up.railway.app`.
 
 ---
 
@@ -108,7 +108,7 @@ Free hosting tiers (such as Render or Fly.io) spin down after 15 minutes of inac
 
 ## 5. Verification with MCP Inspector
 
-Judges can connect the official MCP Inspector to verify that ScamShield is a genuine MCP Streamable HTTP server:
+Judges can connect the official MCP Inspector to verify that AURALERT is a genuine MCP Streamable HTTP server:
 
 ```bash
 npx @modelcontextprotocol/inspector http://127.0.0.1:8000/mcp
@@ -120,7 +120,7 @@ npx @modelcontextprotocol/inspector https://your-service.onrender.com/mcp
 
 ### What You Should See in MCP Inspector:
 1. **Connection:** Select transport **Streamable HTTP**.
-2. **Server Info:** Name: `ScamShield`, version: `0.1.0`.
+2. **Server Info:** Name: `AURALERT`, version: `0.1.0`.
 3. **Tools Tab:** Displays all 7 registered tools:
    - `analyze_message`
    - `check_link`

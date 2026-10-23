@@ -3,8 +3,8 @@
 import pytest
 from starlette.testclient import TestClient
 
-from scamshield.app import create_app
-from scamshield.cases import (
+from auralert.app import create_app
+from auralert.cases import (
     check_safe_word,
     delete_safe_word,
     list_safe_words,
@@ -12,7 +12,7 @@ from scamshield.cases import (
     set_safe_word_service,
     verify_safe_word_service,
 )
-from scamshield.server import set_safe_word, verify_safe_word
+from auralert.server import set_safe_word, verify_safe_word
 
 
 @pytest.fixture

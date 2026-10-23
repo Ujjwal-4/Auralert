@@ -8,8 +8,8 @@ from typing import Any
 
 import httpx
 
-from scamshield.cases.db import fetch_case
-from scamshield.cases.service import (
+from auralert.cases.db import fetch_case
+from auralert.cases.service import (
     _extract_identifiers,
     generate_report_service,
     get_helpline_number,
@@ -17,7 +17,7 @@ from scamshield.cases.service import (
     get_region_data,
 )
 
-logger = logging.getLogger("scamshield.cases.report_ai")
+logger = logging.getLogger("auralert.cases.report_ai")
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_OPENROUTER_MODEL = "nvidia/nemotron-3.5-lightning:free"
@@ -49,7 +49,7 @@ async def generate_dynamic_report(case_id: str) -> dict[str, Any]:
     timeline = case.get("timeline", [])
     identifiers = _extract_identifiers(evidence_items)
 
-    prompt = f"""You are ScamShield AI Senior Cybercrime Forensic Analyst.
+    prompt = f"""You are AURALERT AI Senior Cybercrime Forensic Analyst.
 Synthesize a formal, complaint-ready, highly detailed Cybercrime Incident Dossier in Markdown.
 This document will be submitted by the victim to law enforcement and national reporting portals.
 
@@ -87,7 +87,7 @@ Output ONLY the complete Markdown document. Do not wrap in conversational meta-t
         "Authorization": f"Bearer {key}",
         "Content-Type": "application/json",
         "HTTP-Referer": "http://localhost:8000",
-        "X-Title": "ScamShield Cybercrime Report Generator",
+        "X-Title": "AURALERT Cybercrime Report Generator",
     }
 
     payload = {

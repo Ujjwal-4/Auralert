@@ -5,7 +5,7 @@ import re
 from datetime import UTC, datetime
 from typing import Any
 
-from scamshield.cases.db import (
+from auralert.cases.db import (
     check_safe_word,
     create_case,
     export_all_threat_indicators,
@@ -17,9 +17,9 @@ from scamshield.cases.db import (
     insert_evidence,
     save_safe_word,
 )
-from scamshield.detection.link_checker import check_link
-from scamshield.detection.message_analyzer import analyze_message
-from scamshield.regions import (
+from auralert.detection.link_checker import check_link
+from auralert.detection.message_analyzer import analyze_message
+from auralert.regions import (
     get_helpline_number,
     get_official_portal_url,
     get_payment_steps,
@@ -487,7 +487,7 @@ def generate_report_service(case_id: str) -> dict[str, Any]:
     lines = [
         f"# Cybercrime Incident Report — Case {case['case_id'].upper()}",
         "",
-        "> **Notice for Citizen / Victim:** This is an official cybercrime evidentiary dossier compiled by ScamShield. Review and submit this document to law enforcement authorities and official reporting portals without delay. Never share confidential banking PINs or OTPs in public forums.",
+        "> **Notice for Citizen / Victim:** This is an official cybercrime evidentiary dossier compiled by AURALERT. Review and submit this document to law enforcement authorities and official reporting portals without delay. Never share confidential banking PINs or OTPs in public forums.",
         "",
         "## 1. Executive Incident Summary & Risk Assessment",
         f"- **Case Reference:** `{case['case_id'].upper()}`",
@@ -588,7 +588,7 @@ def generate_report_service(case_id: str) -> dict[str, Any]:
             "- Remember: Real police, CBI, customs, and bank officials **never** conduct judicial trials or demand payments over video calls or UPI.",
             "",
             "---",
-            f"*Evidentiary dossier synthesized by ScamShield for Alexa+ | Official portal verification required ({reg_data.get('notice', 'Verify before use')}).*",
+            f"*Evidentiary dossier synthesized by AURALERT for Alexa+ | Official portal verification required ({reg_data.get('notice', 'Verify before use')}).*",
         ]
     )
 
@@ -644,8 +644,8 @@ def notify_family_service(
             break
 
     alert_body = custom_message or (
-        f"🚨 ScamShield Family Alert: {relationship} {contact_name}, your family member just encountered "
-        f"{threat_topic} on Alexa+. ScamShield flagged it and saved the evidence. "
+        f"🚨 AURALERT Family Alert: {relationship} {contact_name}, your family member just encountered "
+        f"{threat_topic} on Alexa+. AURALERT flagged it and saved the evidence. "
         f"Case Ref: #{case_id}. Please check in with them to make sure they are safe."
     )
 
@@ -730,7 +730,7 @@ def verify_safe_word_service(
     if not result.get("found"):
         speak = (
             f"No secret safe word has been configured for {clean_name} yet. "
-            "Please configure a family safe word in ScamShield settings first."
+            "Please configure a family safe word in AURALERT settings first."
         )
         return {
             "verified": False,
@@ -775,14 +775,14 @@ def check_repeat_offender_service(
     indicator: str,
     indicator_type: str = "auto",
 ) -> dict[str, Any]:
-    """Cross-reference a phone number, UPI ID, or domain against past incidents in ScamShield memory."""
+    """Cross-reference a phone number, UPI ID, or domain against past incidents in AURALERT memory."""
     res = find_repeat_offenders(indicator_value=indicator, indicator_type=indicator_type)
 
     if res.get("is_repeat_offender"):
         cnt = res["match_count"]
         itype = res["indicator_type"]
         speak = (
-            f"Warning: This {itype} appeared in {cnt} earlier case{'s' if cnt != 1 else ''} on ScamShield. "
+            f"Warning: This {itype} appeared in {cnt} earlier case{'s' if cnt != 1 else ''} on AURALERT. "
             "This is a confirmed repeat offender. Do not engage or send any funds."
         )
     else:
@@ -799,7 +799,7 @@ def export_threat_intel_service(format: str = "json") -> dict[str, Any]:
     repeats = data.get("total_repeat_offenders", 0)
 
     speak = (
-        f"Exported {count} unique threat indicators from the ScamShield database, "
+        f"Exported {count} unique threat indicators from the AURALERT database, "
         f"including {repeats} confirmed repeat offenders."
     )
     data["speak"] = speak

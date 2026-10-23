@@ -1,6 +1,6 @@
 # Detection Evaluation (honest numbers)
 
-ScamShield's message analyzer is **rule-based and explainable**. It is not a trained model and has no live threat intelligence, so it will miss novel scam wording. This page reports exactly how it was measured.
+AURALERT's message analyzer is **rule-based and explainable**. It is not a trained model and has no live threat intelligence, so it will miss novel scam wording. This page reports exactly how it was measured.
 
 "Flagged" means the verdict was `suspicious` or `likely_scam`. "Strict" means a scam was rated `likely_scam` and a benign message was rated `safe`.
 

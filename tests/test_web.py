@@ -3,7 +3,7 @@
 import pytest
 from starlette.testclient import TestClient
 
-from scamshield.app import create_app
+from auralert.app import create_app
 
 
 @pytest.fixture

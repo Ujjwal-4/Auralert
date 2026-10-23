@@ -1,4 +1,4 @@
-# Developer Friction Log: Building ScamShield for Alexa+
+# Developer Friction Log: Building AURALERT for Alexa+
 
 > **Build, Ship, Shape: Amazon Developer Hackathon 2026**  
 > **Track:** Alexa+ (Self-Hosted MCP Server & Agent Brain)  
@@ -112,7 +112,7 @@ Building a voice-first cybersecurity agent adhering to the new **Model Context P
   ```
   Passing raw MCP tool schemas directly caused Bedrock parameter validation errors.
 - **Resolution:**
-  Built a dedicated converter `mcp_to_bedrock_tools()` in `src/scamshield/agent/schemas.py` that strips internal FastMCP metadata and packages the input schema strictly under `inputSchema.json`.
+  Built a dedicated converter `mcp_to_bedrock_tools()` in `src/auralert/agent/schemas.py` that strips internal FastMCP metadata and packages the input schema strictly under `inputSchema.json`.
 
 ---
 

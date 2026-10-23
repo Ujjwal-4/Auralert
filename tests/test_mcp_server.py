@@ -1,12 +1,12 @@
-"""In-process HTTP integration tests for ScamShield MCP Streamable HTTP server."""
+"""In-process HTTP integration tests for AURALERT MCP Streamable HTTP server."""
 
 import json
 
 import pytest
 from starlette.testclient import TestClient
 
-from scamshield.app import create_app
-from scamshield.cases import delete_case
+from auralert.app import create_app
+from auralert.cases import delete_case
 
 
 @pytest.fixture

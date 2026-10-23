@@ -1,6 +1,6 @@
 """Unit and integration tests for SQLite case files, evidence, next steps, and reports."""
 
-from scamshield.cases import (
+from auralert.cases import (
     add_evidence_service,
     delete_case,
     fetch_case,
@@ -9,7 +9,7 @@ from scamshield.cases import (
     next_steps_service,
     open_case_service,
 )
-from scamshield.cases.db import db_session
+from auralert.cases.db import db_session
 
 
 def test_full_case_lifecycle():

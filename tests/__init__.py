@@ -1,1 +1,1 @@
-"""ScamShield test suite."""
+"""AURALERT test suite."""

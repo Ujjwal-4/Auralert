@@ -54,7 +54,7 @@ Simultaneously, AURALERT logs the evidence in a local case file (`shield-2841`),
 
 ## System Architecture
 
-ScamShield implements a multi-tier, defense-in-depth architecture adhering to the MCP 2025-11-25 specification over Streamable HTTP:
+AURALERT implements a multi-tier, defense-in-depth architecture adhering to the MCP 2025-11-25 specification over Streamable HTTP:
 
 ```mermaid
 flowchart TD
@@ -74,7 +74,7 @@ flowchart TD
         StreamableHTTP["Streamable HTTP Transport (POST/GET/DELETE /mcp)<br/>• MCP Spec 2025-11-25<br/>• DNS-Rebinding & Origin Validation<br/>• Session Header (mcp-session-id)"]
     end
 
-    subgraph MCPTools ["ScamShield MCPServer (17 Tools)"]
+    subgraph MCPTools ["AURALERT MCPServer (17 Tools)"]
         T1["analyze_message"]
         T2["check_link"]
         T3["open_case"]
@@ -137,24 +137,24 @@ All tools are mounted under `POST /mcp` (Streamable HTTP, MCP spec 2025-11-25) a
 
 ## 🌟 4 Unique Differentiators
 
-ScamShield introduces four innovative features engineered specifically for real-world elder protection, family safety, and cross-case intelligence:
+AURALERT introduces four innovative features engineered specifically for real-world elder protection, family safety, and cross-case intelligence:
 
 ### 1. Live Call Guard (Best Demo Moment)
 - **Problem:** Scammers keep victims trapped on speakerphone calls, using rapid psychological pressure to extract OTPs or bank transfers before the victim can reflect.
-- **Solution:** The user puts the suspicious call on speaker. ScamShield listens in **rolling chunks** via Web Speech API or audio stream, continuously maintains a **cumulative risk score (0-100)**, and immediately interrupts the dialogue with an audible emergency alert when critical thresholds are crossed:
+- **Solution:** The user puts the suspicious call on speaker. AURALERT listens in **rolling chunks** via Web Speech API or audio stream, continuously maintains a **cumulative risk score (0-100)**, and immediately interrupts the dialogue with an audible emergency alert when critical thresholds are crossed:
   > 🗣️ *"They just asked for an OTP, hang up now!"* / *"Digital arrest detected! Police never arrest citizens over video calls. Hang up immediately!"*
-- **Action:** Clicking "Hang Up & Open Case" automatically converts the entire call transcript into a formal ScamShield case file with official Golden Hour reporting steps.
+- **Action:** Clicking "Hang Up & Open Case" automatically converts the entire call transcript into a formal AURALERT case file with official Golden Hour reporting steps.
 
 ### 2. Family Safe-Word Check
 - **Problem:** AI voice clones (trained on 3 seconds of social media audio) and "Hi Mom, new number, I lost my phone and need emergency bail" scams are devastating families.
-- **Solution:** A pre-shared secret code word (e.g. Son: *"Falcon"*). ScamShield securely stores salted SHA-256 hashes of safe words in SQLite (never plaintext) and provides instant voice verification tools.
+- **Solution:** A pre-shared secret code word (e.g. Son: *"Falcon"*). AURALERT securely stores salted SHA-256 hashes of safe words in SQLite (never plaintext) and provides instant voice verification tools.
 - **Verdict:** If the caller provides the wrong word:
   > 🗣️ *"Warning: Safe word mismatch! The caller failed the secret code check. This may be an AI voice clone or 'Hi Mom' impersonation scam. Hang up immediately."*
 
 ### 3. Repeat-Offender Memory & Threat Intel Export
 - **Problem:** Scammers reuse phone numbers, UPI payment handles (`fraudster@okaxis`), and lookalike domains across hundreds of victims.
-- **Solution:** Whenever evidence is logged, ScamShield extracts normalized indicators and auto-links them across historical cases. If an indicator appeared in earlier cases, ScamShield immediately escalates the risk score and announces:
-  > 🗣️ *"Warning: This phone number appeared in 3 earlier cases on ScamShield. Confirmed repeat scammer."*
+- **Solution:** Whenever evidence is logged, AURALERT extracts normalized indicators and auto-links them across historical cases. If an indicator appeared in earlier cases, AURALERT immediately escalates the risk score and announces:
+  > 🗣️ *"Warning: This phone number appeared in 3 earlier cases on AURALERT. Confirmed repeat scammer."*
 - **CTI Export:** A 1-click **Export Threat Intel Feed (JSON)** exports all indicators with STIX-compatible metadata (`indicator_value`, `first_seen`, `occurrence_count`, `threat_level`, `associated_cases`) for submission to cyber cells and CERT-In.
 
 ### 4. Hindi Voice Mode (हिन्दी)
@@ -166,7 +166,7 @@ ScamShield introduces four innovative features engineered specifically for real-
 
 ## Agent Brain & Fallback Router
 
-ScamShield's agent endpoint (`POST /api/agent`) powers the simulated Alexa+ conversational experience:
+AURALERT's agent endpoint (`POST /api/agent`) powers the simulated Alexa+ conversational experience:
 
 The brain tries three providers in order and reports which one answered in the `brain` field of every response (`bedrock`, `openrouter`, or `fallback`):
 
@@ -205,8 +205,8 @@ Located at `web/` and served at root `http://localhost:8000/`:
 
 ### 1. Clone & Setup Environment
 ```bash
-git clone https://github.com/your-username/scamshield.git
-cd scamshield
+git clone https://github.com/Ujjwal-4/Auralert.git
+cd Auralert
 
 # Create and activate virtual environment
 python -m venv .venv
@@ -228,7 +228,7 @@ cp .env.example .env
 Key configuration values in `.env`:
 ```ini
 PORT=8000
-DB_PATH=./data/scamshield.db
+DB_PATH=./data/auralert.db
 DEFAULT_REGION=IN
 ALLOWED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000
 
@@ -254,7 +254,7 @@ The server will start at `http://127.0.0.1:8000`:
 
 ## Running the Test Suite
 
-ScamShield includes 81 automated tests covering detection, hardening, MCP transport, agent routing, and end-to-end scenarios. Tests run against an isolated temporary database and never touch `data/scamshield.db`:
+AURALERT includes 81 automated tests covering detection, hardening, MCP transport, agent routing, and end-to-end scenarios. Tests run against an isolated temporary database and never touch `data/auralert.db`:
 
 ```bash
 # Run complete test suite
@@ -278,7 +278,7 @@ python scripts/agent_smoke.py
 
 ## Docker Deployment
 
-ScamShield includes a production-ready, non-root Dockerfile and Compose setup.
+AURALERT includes a production-ready, non-root Dockerfile and Compose setup.
 
 ```bash
 # Build and run container
@@ -294,7 +294,7 @@ For detailed production deployment instructions (Render, Fly.io, Railway), see [
 
 ## Regional Helplines & Verification
 
-ScamShield ships with pre-configured official reporting contacts for India, the United States, and the United Kingdom:
+AURALERT ships with pre-configured official reporting contacts for India, the United States, and the United Kingdom:
 
 | Region | Primary Helpline | Official Reporting Portal | Primary Authorities |
 |---|---|---|---|
@@ -309,8 +309,8 @@ ScamShield ships with pre-configured official reporting contacts for India, the 
 
 ## Security & Privacy Posture
 
-1. **Strictly Defensive:** ScamShield contains zero offensive hacking or scam-generation features.
-2. **No URL fetching (SSRF-safe by design):** ScamShield analyzes user-supplied links purely statically through regex, string parsing, and Levenshtein distance. The detection code **never visits or fetches the target URL**, and a test blocks sockets to prove it.
+1. **Strictly Defensive:** AURALERT contains zero offensive hacking or scam-generation features.
+2. **No URL fetching (SSRF-safe by design):** AURALERT analyzes user-supplied links purely statically through regex, string parsing, and Levenshtein distance. The detection code **never visits or fetches the target URL**, and a test blocks sockets to prove it.
 3. **Data Minimization:** No user accounts or personal phone numbers are required. All incident data is stored locally in an ephemeral SQLite database.
 4. **Right to Be Forgotten:** Case dossiers can be purged immediately via the internal `delete_case(case_id)` function with cascading deletion of all associated evidence.
 5. **DNS-Rebinding Protection:** Implements strict Host and Origin header validation to guard against cross-site hijacking attacks per the MCP specification.

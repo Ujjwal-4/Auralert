@@ -8,8 +8,8 @@ Build, Ship, Shape: Amazon Developer Hackathon 2026 (Devpost: amazonappdev2026.d
 - Mini-challenges I am targeting: AWS Builder (use Amazon Bedrock) and Open Source (public repo, OSI license).
 - Hard deadline: 23 Oct 2026, 12:00 PM PT.
 
-# Project: ScamShield for Alexa+
-Tagline: Voice-first scam defense. The user describes a suspicious call, SMS, email or link out loud; ScamShield returns a verdict, a plain-language explanation, builds a case file, and drafts a report with official next steps.
+# Project: AURALERT for Alexa+
+Tagline: Voice-first scam defense tool that listens to suspicious calls, checks family safe words, links repeat-offender indicators, and prepares incident reports.
 Target users: everyday people and families, especially elders, who get panicked by scams (fake KYC/OTP, UPI collect requests, "digital arrest" calls, courier/customs scams, fake job offers, gift-card and crypto scams, bank/tech-support impersonation, phishing links).
 Primary region: India (helpline 1930, cybercrime.gov.in). Must be region-configurable (IN, US, UK at minimum) to show global scalability.
 
@@ -44,9 +44,9 @@ Primary region: India (helpline 1930, cybercrime.gov.in). Must be region-configu
 - Always label the web UI as "Simulated Alexa+ experience" (not an official Alexa client).
 
 # Repo layout
-scamshield/
+auralert/
   CONTEXT.md  README.md  LICENSE(MIT)  .env.example  Dockerfile  pyproject.toml
-  src/scamshield/{server.py, app.py, detection/, cases/, regions.py, agent/}
+  src/auralert/{server.py, app.py, detection/, cases/, regions.py, agent/}
   data/{scam_patterns.json, regions.json, brands.json}
   web/{index.html, app.js, styles.css}
   tests/  scripts/  docs/{ARCHITECTURE.md, FRICTION-LOG.md, DEVPOST.md, DEMO-SCRIPT.md}

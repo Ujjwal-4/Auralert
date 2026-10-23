@@ -1,7 +1,7 @@
 # Render blueprint: New + > Blueprint, point at this repo. Fill secret values in the Render dashboard.
 services:
   - type: web
-    name: scamshield
+    name: auralert
     runtime: docker
     plan: free
     healthCheckPath: /healthz
@@ -9,7 +9,7 @@ services:
       - key: PORT
         value: "8000"
       - key: DB_PATH
-        value: /app/data/scamshield.db
+        value: /app/data/auralert.db
       - key: ALLOWED_ORIGINS
         sync: false          # set to https://<your-service>.onrender.com
       - key: ALLOWED_HOSTS

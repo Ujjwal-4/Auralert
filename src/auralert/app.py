@@ -1,4 +1,4 @@
-"""Main Starlette/FastAPI application for ScamShield.
+"""Main Starlette/FastAPI application for AURALERT.
 
 Mounts:
 - Streamable HTTP MCP server at /mcp (MCP spec 2025-11-25)
@@ -29,19 +29,19 @@ from starlette.requests import Request
 from starlette.responses import FileResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
-from scamshield.agent.brain import agent_brain
-from scamshield.cases import (
+from auralert.agent.brain import agent_brain
+from auralert.cases import (
     check_repeat_offender_service,
     export_threat_intel_service,
     list_safe_words,
     set_safe_word_service,
     verify_safe_word_service,
 )
-from scamshield.detection import DEMO_SCENARIOS, call_guard_registry
-from scamshield.server import mcp_server
+from auralert.detection import DEMO_SCENARIOS, call_guard_registry
+from auralert.server import mcp_server
 
 # Setup structured logger
-logger = logging.getLogger("scamshield.access")
+logger = logging.getLogger("auralert.access")
 if not logger.handlers:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
 
@@ -136,7 +136,7 @@ class StructuredLoggingMiddleware(BaseHTTPMiddleware):
 
 
 def create_app() -> Any:
-    """Build and configure the main ScamShield application."""
+    """Build and configure the main AURALERT application."""
     allowed_origins_env = os.getenv(
         "ALLOWED_ORIGINS",
         "http://localhost:8000,http://127.0.0.1:8000",
@@ -304,7 +304,7 @@ def create_app() -> Any:
         res = export_threat_intel_service(format="json")
         return JSONResponse(
             res,
-            headers={"Content-Disposition": 'attachment; filename="scamshield-threat-intel.json"'},
+            headers={"Content-Disposition": 'attachment; filename="auralert-threat-intel.json"'},
         )
 
     app.add_route("/api/indicators/check", indicators_check, methods=["GET"])
@@ -324,7 +324,7 @@ def create_app() -> Any:
         async def serve_index(request: Request) -> Any:
             if index_file.exists():
                 return FileResponse(str(index_file), headers=no_cache_headers)
-            return JSONResponse({"status": "ScamShield web simulator"})
+            return JSONResponse({"status": "AURALERT web simulator"})
 
         css_file = web_dir / "styles.css"
         js_file = web_dir / "app.js"
@@ -347,5 +347,5 @@ def create_app() -> Any:
     return app
 
 
-# Root application instance for ASGI servers (uvicorn scamshield.app:app)
+# Root application instance for ASGI servers (uvicorn auralert.app:app)
 app = create_app()

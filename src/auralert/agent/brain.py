@@ -12,18 +12,18 @@ from typing import Any
 import boto3
 from botocore.exceptions import BotoCoreError, ClientError
 
-from scamshield.agent.fallback import handle_fallback_turn
-from scamshield.agent.mcp_client import mcp_client
-from scamshield.agent.openrouter import run_openrouter_turn
-from scamshield.agent.schemas import (
+from auralert.agent.fallback import handle_fallback_turn
+from auralert.agent.mcp_client import mcp_client
+from auralert.agent.openrouter import run_openrouter_turn
+from auralert.agent.schemas import (
     AgentResponse,
     AgentUIState,
     ToolCallRecord,
     mcp_tool_list_to_bedrock_config,
 )
-from scamshield.agent.session import session_store
+from auralert.agent.session import session_store
 
-logger = logging.getLogger("scamshield.brain")
+logger = logging.getLogger("auralert.brain")
 
 DEFAULT_MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0"
 BEDROCK_TIMEOUT_SECONDS = 8.0

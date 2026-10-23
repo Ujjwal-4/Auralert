@@ -3,14 +3,14 @@
 import pytest
 from starlette.testclient import TestClient
 
-from scamshield.agent.fallback import handle_fallback_turn
-from scamshield.agent.schemas import (
+from auralert.agent.fallback import handle_fallback_turn
+from auralert.agent.schemas import (
     mcp_tool_list_to_bedrock_config,
     mcp_tool_to_bedrock_spec,
 )
-from scamshield.agent.session import SessionStore
-from scamshield.app import create_app
-from scamshield.cases import delete_case
+from auralert.agent.session import SessionStore
+from auralert.app import create_app
+from auralert.cases import delete_case
 
 
 def test_mcp_to_bedrock_schema_conversion():

@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Create non-root application user
-RUN groupadd -g 1000 scamshield && \
-    useradd -u 1000 -g scamshield -m -s /bin/bash scamshield
+RUN groupadd -g 1000 auralert && \
+    useradd -u 1000 -g auralert -m -s /bin/bash auralert
 
 # Install python dependencies first for efficient caching
 COPY pyproject.toml .
@@ -27,13 +27,13 @@ COPY data/ /app/data/
 COPY web/ /app/web/
 
 # Ensure application directories are owned by non-root user
-RUN mkdir -p /app/data && chown -R scamshield:scamshield /app
+RUN mkdir -p /app/data && chown -R auralert:auralert /app
 
-USER scamshield
+USER auralert
 
 EXPOSE 8000
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
     CMD curl -f http://127.0.0.1:${PORT}/healthz || exit 1
 
-CMD ["sh", "-c", "uvicorn scamshield.app:app --host 0.0.0.0 --port ${PORT}"]
+CMD ["sh", "-c", "uvicorn auralert.app:app --host 0.0.0.0 --port ${PORT}"]
