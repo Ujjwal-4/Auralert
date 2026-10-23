@@ -17,14 +17,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN groupadd -g 1000 auralert && \
     useradd -u 1000 -g auralert -m -s /bin/bash auralert
 
-# Install python dependencies first for efficient caching
-COPY pyproject.toml .
-RUN pip install --no-cache-dir .
+# Copy application files needed for installation
+COPY pyproject.toml README.md ./
+COPY src/ ./src/
+COPY data/ ./data/
+COPY web/ ./web/
 
-# Copy application code, data, and web UI
-COPY src/ /app/src/
-COPY data/ /app/data/
-COPY web/ /app/web/
+# Install python dependencies and package
+RUN pip install --no-cache-dir .
 
 # Ensure application directories are owned by non-root user
 RUN mkdir -p /app/data && chown -R auralert:auralert /app
