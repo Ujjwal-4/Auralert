@@ -362,7 +362,7 @@
                                 <option value="electricity_kyc">⚡ Electricity Blackout & QuickSupport APK (5 chunks)</option>
                                 <option value="bank_kyc_otp">🏦 SBI Account Suspension & OTP Trap (4 chunks)</option>
                             </select>
-                            <button id="start-live-call-btn" class="btn btn-primary">▶️ Start Live Session</button>
+                            <button id="start-live-call-btn" class="btn btn-primary">▶️ Start Live Stream</button>
                         </div>
                     </div>
 
@@ -392,6 +392,13 @@
                             </div>
                         </div>
 
+                        <!-- Interactive Chunk Feeding Controls (Placed ABOVE transcript for immediate visibility) -->
+                        <div class="live-controls-row">
+                            <button id="autoplay-call-btn" class="btn btn-primary">⏸️ Pause Stream</button>
+                            <button id="next-chunk-btn" class="btn btn-secondary">⏭️ Next Chunk</button>
+                            <button id="hang-up-action-btn" class="btn btn-danger">🛑 Hang Up & Open Case</button>
+                        </div>
+
                         <!-- Dialogue Transcript Stream -->
                         <div class="live-transcript-box">
                             <div class="transcript-header">
@@ -403,16 +410,9 @@
                             </div>
                         </div>
 
-                        <!-- Interactive Chunk Feeding Controls -->
-                        <div class="live-controls-row">
-                            <button id="next-chunk-btn" class="btn btn-secondary">⏭️ Feed Next Chunk</button>
-                            <button id="autoplay-call-btn" class="btn btn-primary">▶️ Auto-Play Dialogue</button>
-                            <button id="hang-up-action-btn" class="btn btn-danger">🛑 Hang Up & Open Case</button>
-                        </div>
-
                         <!-- Custom Spoken Chunk Input -->
                         <div class="custom-chunk-input-wrap">
-                            <input type="text" id="custom-chunk-text" class="text-input-sm" placeholder="Or type/speak live what the caller says right now...">
+                            <input type="text" id="custom-chunk-text" class="text-input-sm" placeholder="Or type what the caller says right now...">
                             <button id="send-custom-chunk-btn" class="btn btn-sm btn-secondary">Feed Audio</button>
                         </div>
                     </div>

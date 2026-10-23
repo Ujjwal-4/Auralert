@@ -925,7 +925,7 @@
     // Report Modal Handlers
     async function openModal() {
         if (state.activeCaseId) {
-            reportContent.textContent = "Compiling dynamic AI cybercrime incident dossier from case database...";
+            reportContent.textContent = "Compiling official cybercrime incident dossier from case database...";
             try {
                 const res = await fetch("/api/agent", {
                     method: "POST",
@@ -1119,7 +1119,7 @@
         liveCallModal.hidden = false;
         liveCallModal.classList.add("active");
         liveCallModal.style.display = "flex";
-        fetchLivePresets();
+        fetchLivePresets().then(updateScenarioPreview);
     }
 
     function closeLiveCallModal() {
@@ -1128,6 +1128,7 @@
             clearInterval(state.liveAutoplayTimer);
             state.liveAutoplayTimer = null;
         }
+        updateLiveButtonsState(false);
         liveCallModal.hidden = true;
         liveCallModal.classList.remove("active");
         liveCallModal.style.display = "none";
@@ -1145,7 +1146,35 @@
         }
     }
 
-    async function startLiveCallSession() {
+    function updateScenarioPreview() {
+        if (!liveCallScenarioSelect) return;
+        const scnKey = liveCallScenarioSelect.value;
+        const preset = state.livePresets ? state.livePresets[scnKey] : null;
+        if (preset && !state.liveCallId) {
+            liveChunkCounter.textContent = `Chunks: 0 / ${preset.chunks.length}`;
+        }
+    }
+
+    function updateLiveButtonsState(isPlaying) {
+        if (isPlaying) {
+            if (startLiveCallBtn) startLiveCallBtn.textContent = "⏸️ Pause Live Stream";
+            if (autoplayCallBtn) autoplayCallBtn.textContent = "⏸️ Pause Stream";
+        } else {
+            const hasChunksLeft = state.liveCallPreset && state.liveChunkIndex < state.liveCallPreset.chunks.length;
+            if (state.liveCallId && hasChunksLeft) {
+                if (startLiveCallBtn) startLiveCallBtn.textContent = "▶️ Resume Live Stream";
+                if (autoplayCallBtn) autoplayCallBtn.textContent = "▶️ Resume Stream";
+            } else if (state.liveCallId && !hasChunksLeft) {
+                if (startLiveCallBtn) startLiveCallBtn.textContent = "🔁 Replay Scenario";
+                if (autoplayCallBtn) autoplayCallBtn.textContent = "🔁 Replay Scenario";
+            } else {
+                if (startLiveCallBtn) startLiveCallBtn.textContent = "▶️ Start Live Stream";
+                if (autoplayCallBtn) autoplayCallBtn.textContent = "▶️ Auto-Play Stream";
+            }
+        }
+    }
+
+    async function initAndStartLiveStream() {
         await fetchLivePresets();
         const scnKey = liveCallScenarioSelect.value;
         const preset = state.livePresets ? state.livePresets[scnKey] : null;
@@ -1180,18 +1209,51 @@
             liveUrgentWarningBanner.style.display = "none";
             liveFlagsList.innerHTML = '<span class="flag-pill flag-clean">Listening for tactics...</span>';
             liveChunkCounter.textContent = `Chunks: 0 / ${preset ? preset.chunks.length : "Live"}`;
-            autoplayCallBtn.textContent = "▶️ Auto-Play Dialogue";
             hangUpActionBtn.classList.remove("pulse-danger");
 
+            updateLiveButtonsState(true);
             speakText(data.speak || "Live call monitoring started.");
+
+            // Immediately feed first chunk
+            await feedNextLiveChunk();
+
+            // Set recurring timer for subsequent chunks (every 2.8 seconds)
+            state.liveAutoplayTimer = setInterval(async function () {
+                await feedNextLiveChunk();
+            }, 2800);
         } catch (err) {
             console.warn("Failed to start live call:", err);
+            updateLiveButtonsState(false);
         }
+    }
+
+    async function toggleLiveCallPlayback() {
+        // If actively playing, pause it
+        if (state.liveAutoplayTimer) {
+            clearInterval(state.liveAutoplayTimer);
+            state.liveAutoplayTimer = null;
+            updateLiveButtonsState(false);
+            return;
+        }
+
+        // If an active scenario is paused and has chunks remaining, resume it
+        if (state.liveCallId && state.liveCallPreset && state.liveChunkIndex < state.liveCallPreset.chunks.length) {
+            updateLiveButtonsState(true);
+            await feedNextLiveChunk();
+            state.liveAutoplayTimer = setInterval(async function () {
+                await feedNextLiveChunk();
+            }, 2800);
+            return;
+        }
+
+        // Otherwise (first click or replay), start fresh
+        await initAndStartLiveStream();
     }
 
     async function feedNextLiveChunk(textOverride) {
         if (!state.liveCallId) {
-            await startLiveCallSession();
+            await initAndStartLiveStream();
+            return;
         }
 
         let chunkText = "";
@@ -1201,12 +1263,13 @@
             chunkText = textOverride;
         } else if (state.liveCallPreset && state.liveCallPreset.chunks) {
             if (state.liveChunkIndex >= state.liveCallPreset.chunks.length) {
-                speakText("All dialogue chunks for this scenario have been processed.");
                 if (state.liveAutoplayTimer) {
                     clearInterval(state.liveAutoplayTimer);
                     state.liveAutoplayTimer = null;
-                    autoplayCallBtn.textContent = "▶️ Auto-Play Dialogue";
                 }
+                updateLiveButtonsState(false);
+                hangUpActionBtn.classList.add("pulse-danger");
+                speakText("Scenario completed. All dialogue processed. Hang up to generate incident dossier.");
                 return;
             }
             const chunkObj = state.liveCallPreset.chunks[state.liveChunkIndex];
@@ -1288,30 +1351,6 @@
         }
     }
 
-    function toggleAutoplayLiveCall() {
-        if (state.liveAutoplayTimer) {
-            clearInterval(state.liveAutoplayTimer);
-            state.liveAutoplayTimer = null;
-            autoplayCallBtn.textContent = "▶️ Auto-Play Dialogue";
-        } else {
-            if (!state.liveCallId) {
-                startLiveCallSession().then(() => {
-                    startTimer();
-                });
-            } else {
-                startTimer();
-            }
-            autoplayCallBtn.textContent = "⏸️ Pause Dialogue";
-        }
-
-        function startTimer() {
-            feedNextLiveChunk();
-            state.liveAutoplayTimer = setInterval(function () {
-                feedNextLiveChunk();
-            }, 3200);
-        }
-    }
-
     async function hangUpAndOpenCase() {
         if (state.liveAutoplayTimer) {
             clearInterval(state.liveAutoplayTimer);
@@ -1341,6 +1380,9 @@
                     `🛑 Live Call Intercepted! ${data.speak || ""}`,
                     [{ name: "end_call_guard", arguments: { call_id: state.liveCallId }, result_summary: data }]
                 );
+                closeLiveCallModal();
+                openModal();
+                return;
             }
         } catch (err) {
             console.warn("Failed to end call guard:", err);
@@ -1352,10 +1394,23 @@
     if (liveCallBtn) liveCallBtn.addEventListener("click", openLiveCallModal);
     if (closeLiveCallModalBtn) closeLiveCallModalBtn.addEventListener("click", closeLiveCallModal);
     if (closeLiveCallFooterBtn) closeLiveCallFooterBtn.addEventListener("click", closeLiveCallModal);
-    if (startLiveCallBtn) startLiveCallBtn.addEventListener("click", startLiveCallSession);
+    if (startLiveCallBtn) startLiveCallBtn.addEventListener("click", toggleLiveCallPlayback);
+    if (autoplayCallBtn) autoplayCallBtn.addEventListener("click", toggleLiveCallPlayback);
     if (nextChunkBtn) nextChunkBtn.addEventListener("click", () => feedNextLiveChunk());
-    if (autoplayCallBtn) autoplayCallBtn.addEventListener("click", toggleAutoplayLiveCall);
     if (hangUpActionBtn) hangUpActionBtn.addEventListener("click", hangUpAndOpenCase);
+    if (liveCallScenarioSelect) {
+        liveCallScenarioSelect.addEventListener("change", function () {
+            if (state.liveAutoplayTimer) {
+                clearInterval(state.liveAutoplayTimer);
+                state.liveAutoplayTimer = null;
+            }
+            state.liveCallId = null;
+            state.liveChunkIndex = 0;
+            updateScenarioPreview();
+            updateLiveButtonsState(false);
+            if (liveCallDashboard) liveCallDashboard.style.display = "none";
+        });
+    }
 
     if (sendCustomChunkBtn && customChunkText) {
         sendCustomChunkBtn.addEventListener("click", function () {
